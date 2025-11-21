@@ -11,7 +11,7 @@
 
       <div class="header-actions">
         <button class="icon-btn">🛒 <span class="cart-badge">3</span></button>
-        <a href="login.html" class="btn btn-logout">Logout</a>
+        <a href="{{ route('logout') }}" class="btn btn-logout">Logout</a>
       </div>
       
     </div>
