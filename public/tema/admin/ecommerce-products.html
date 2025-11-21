@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        
+        
+        <meta charset="utf-8" />
+        <title>Products | GateZone - Admin & Dashboard Template</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesdesign" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- ION Slider -->
+        <link href="assets/libs/ion-rangeslider/css/ion.rangeSlider.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <!-- Bootstrap Css -->
+        <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
+
+    </head>
+
+    
+    <body>
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+           <header id="page-topbar">
+            <div class="navbar-header">
+                <div class="d-flex">
+
+                       <!-- LOGO -->
+                 <div class="navbar-brand-box">
+                    <a href="index.html" class="logo logo-dark">
+                        <span class="logo-lg">
+                             <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='130' height='36' viewBox='0 0 130 36'><text x='0' y='22' font-family='Verdana' font-size='20' fill='%23006ff0'>GadgetZone</text></svg>" alt="logo">
+                        </span>
+                    </a>
+
+                    <a href="index.html" class="logo logo-light">
+                        <span class="logo-sm">
+                            <img src="assets/images/logo-sm.png" alt="" height="22">
+                        </span>
+                        <span class="logo-lg">
+                            <img src="assets/images/logo-light.png" alt="" height="20">
+                        </span>
+                    </a>
+                </div>
+
+                   
+            
+                </div>
+
+                 <!-- Search input -->
+                 <div class="search-wrap" id="search-wrap">
+                    <div class="search-bar">
+                        <input class="search-input form-control" placeholder="Search" />
+                        <a href="#" class="close-search toggle-search" data-target="#search-wrap">
+                            <i class="mdi mdi-close-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <div class="dropdown d-none d-lg-inline-block">
+                        <button type="button" class="btn header-item toggle-search noti-icon waves-effect" data-target="#search-wrap">
+                            <i class="mdi mdi-magnify"></i>
+                        </button>
+                    </div>
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-7.jpg"
+                                alt="Header Avatar">
+                            <span class="d-none d-xl-inline-block ms-1">Fadwa</span>
+                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <!-- item-->
+                            <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle-outline font-size-16 align-middle me-1"></i> Profile</a>
+                            <a class="dropdown-item" href="#"><i class="mdi mdi-wallet-outline font-size-16 align-middle me-1"></i> My Wallet</a>
+                            <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-end">11</span><i class="mdi mdi-cog-outline font-size-16 align-middle me-1"></i> Settings</a>
+                            <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline font-size-16 align-middle me-1"></i> Lock screen</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="#"><i class="mdi mdi-power font-size-16 align-middle me-1 text-danger"></i> Logout</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                            <i class="mdi mdi-cog-outline font-size-20"></i>
+                        </button>
+                    </div>
+            
+                </div>
+            </div>
+        </header>
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="vertical-menu">
+
+                <div data-simplebar class="h-100">
+
+
+                    <div class="user-sidebar text-center">
+                        <div class="dropdown">
+                            <div class="user-img">
+                                <img src="assets/images/users/avatar-7.jpg" alt="" class="rounded-circle">
+                                <span class="avatar-online bg-success"></span>
+                            </div>
+                            <div class="user-info">
+                                <h5 class="mt-3 font-size-16 text-white">Fadwa Bekacor</h5>
+                                <span class="font-size-13 text-white-50">Administrator</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        
+
+                        <li>
+                            <a href="index.html" class="waves-effect">
+                                <i class="dripicons-home"></i><span class="badge rounded-pill bg-info float-end"></span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="ecommerce-add-product.html" class="waves-effect">
+                                <i class="dripicons-home"></i><span class="badge rounded-pill bg-info float-end"></span>
+                                <span>Add Product</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="ecommerce-product-detail.html" class="waves-effect">
+                                <i class="dripicons-home"></i><span class="badge rounded-pill bg-info float-end"></span>
+                                <span>Product Detail</span>
+                            </a>
+                        </li>
+
+                         <li>
+                            <a href="ecommerce-customers.html" class="waves-effect">
+                                <i class="dripicons-home"></i><span class="badge rounded-pill bg-info float-end"></span>
+                                <span>Customers</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="ecommerce-orders.html" class="waves-effect">
+                                <i class="dripicons-home"></i><span class="badge rounded-pill bg-info float-end">3</span>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="ecommerce-checkout.html" class="waves-effect">
+                                <i class="dripicons-home"></i><span class="badge rounded-pill bg-info float-end">3</span>
+                                <span>Checkout</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="ecommerce-shops.html" class="waves-effect">
+                                <i class="dripicons-home"></i><span class="badge rounded-pill bg-info float-end"></span>
+                                <span>Shop</span>
+                            </a>
+                        </li>         
+                    </ul>
+                </div>
+                    <!-- Sidebar -->
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+
+                    <!-- start page title -->
+                    <div class="page-title-box">
+                        <div class="container-fluid">
+                         <div class="row align-items-center">
+                             <div class="col-sm-6">
+                                 <div class="page-title">
+                                     <h4>Products</h4>
+                                         <ol class="breadcrumb m-0">
+                                             <li class="breadcrumb-item"><a href="javascript: void(0);">GateZone</a></li>
+                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
+                                             <li class="breadcrumb-item active">Products</li>
+                                         </ol>
+                                 </div>
+                             </div>
+                             <div class="col-sm-6">
+                                <div class="float-end d-none d-sm-block">
+                                    <a href="" class="btn btn-success">Add Widget</a>
+                                </div>
+                             </div>
+                         </div>
+                        </div>
+                     </div>
+                     <!-- end page title -->    
+
+
+                    <div class="container-fluid">
+
+                        <div class="page-content-wrapper">
+
+                        
+
+
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-4">
+                                   
+                                    
+    
+                                       <div class="card">
+
+                                        <div class="card-body">
+
+                                            <h4 class="header-title">Filters</h4>
+
+                                            <div class="border p-3 rounded mt-4">
+
+                                                <h5 class="font-size-16">Search</h5>
+
+                                                <div class="search-box me-2 mt-3">
+                                                    <div class="position-relative">
+                                                        <input type="text" class="form-control" placeholder="Search...">
+                                                        <i class="ti-search search-icon"></i>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="border p-3 rounded mt-4">
+                                                    <h5 class="font-size-16">Categories</h5>
+    
+        
+                                                <div id="accordion" class="custom-accordion categories-accordion">
+                                                    <div class="categories-group-card">
+                                                        <a href="#collapseOne" class="categories-group-list collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseOne">
+                                                            <i class="ti-desktop font-size-16 align-middle me-2"></i> Electronic
+                                                            <i class="mdi mdi-minus float-end accor-plus-icon"></i>
+                                                        </a>
+                                
+                                                        <div id="collapseOne" class="collapse" data-parent="#accordion">
+                                                            <div>
+                                                                <ul class="list-unstyled categories-list mb-0">
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Mobile</a></li>
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Cemera</a></li>
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Mobile accessories</a></li>
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Computers</a></li>
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Laptops</a></li>
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Speakers</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="categories-group-card">
+                                                        <a href="#collapseTwo" class="categories-group-list" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapseTwo">
+                                                            <i class="ti-archive font-size-16 align-middle me-2"></i> Furniture
+                                                            <i class="mdi mdi-minus float-end accor-plus-icon"></i>
+                                                        </a>
+                                                        <div id="collapseTwo" class="collapse show" data-parent="#accordion">
+                                                            <div>
+                                                                <ul class="list-unstyled categories-list mb-0">
+                                                                    <li class="active"><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Chairs </a></li>
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Tables</a></li>
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Beds </a></li>
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Seating</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="categories-group-card">
+                                                        <a href="#collapseThree" class="categories-group-list collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
+                                                            <i class="mdi mdi-pinwheel-outline font-size-16 align-middle me-2"></i> Baby & Kids
+                                                            <i class="mdi mdi-minus float-end accor-plus-icon"></i>
+                                                        </a>
+                                                        <div id="collapseThree" class="collapse" data-parent="#accordion">
+                                                            <div>
+                                                                <ul class="list-unstyled categories-list mb-0">
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Clothing</a></li>
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Footwear</a></li>
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Toys</a></li>
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Baby care</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="categories-group-card">
+                                                        <a href="#collapseFour" class="categories-group-list collapsed" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseFour">
+                                                            <i class="mdi mdi-dumbbell font-size-16 align-middle me-2"></i> Fitness
+                                                            <i class="mdi mdi-minus float-end accor-plus-icon"></i>
+                                                        </a>
+                                                        <div id="collapseFour" class="collapse" data-parent="#accordion">
+                                                            <div>
+                                                                <ul class="list-unstyled categories-list mb-0">
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Gym equipment</a></li>
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Yoga mat</a></li>
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Dumbbells</a></li>
+                                                                    <li><a href="#"><i class="mdi mdi-circle-medium me-1"></i> Protein supplements</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="border p-3 rounded mt-4">
+                                                <h5 class="font-size-16">Multi Range</h5>
+    
+                                                <div class="mt-4">
+                                                    <div class="form-check mt-2">
+                                                        <input type="radio" id="multirange" name="multirange1" class="form-check-input" checked>
+                                                        <label class="custom-control-label" for="multirange"> All</label>
+                                                    </div>
+                                                    <div class="form-check mt-2">
+                                                        <input type="radio" id="multirange1" name="multirange1" class="form-check-input">
+                                                        <label class="custom-control-label" for="multirange1"> $1 - $10</label>
+                                                    </div>
+                                                    <div class="form-check mt-2">
+                                                        <input type="radio" id="multirange2" name="multirange1" class="form-check-input">
+                                                        <label class="custom-control-label" for="multirange2"> $10 - $100</label>
+                                                    </div>
+                                                    <div class="form-check mt-2">
+                                                        <input type="radio" id="multirange3" name="multirange1" class="form-check-input">
+                                                        <label class="custom-control-label" for="multirange3"> $100 - $500</label>
+                                                    </div>
+                                                    <div class="form-check mt-2">
+                                                        <input type="radio" id="multirange4" name="multirange1" class="form-check-input">
+                                                        <label class="custom-control-label" for="multirange4"> $500</label>
+                                                    </div>
+                                                </div>
+                                        </div>
+        
+                                            <div class="border p-3 rounded mt-4">
+                                                    <h5 class="font-size-16 mb-4">Price</h5>
+        
+                                                    <input type="text" id="pricerange">
+                                            </div>
+
+
+        
+                                         
+                                                <div class="border p-3 rounded mt-4">
+                                                        <h5 class="font-size-16 mb-0 custom-accordion"><a href="#collapseExample1" class="text-dark d-block" data-bs-toggle="collapse" >Discount <i class="mdi mdi-minus float-end accor-plus-icon"></i></a></h5>
+            
+                                                        <div class="collapse show" id="collapseExample1">
+                
+                                                            <div class="mt-4">
+                                                                <div class="form-check mt-2">
+                                                                    <input type="radio" id="productdiscountRadio6" name="productdiscountRadio1" class="form-check-input">
+                                                                    <label class="custom-control-label" for="productdiscountRadio6">50% or more</label>
+                                                                </div>
+                                                                <div class="form-check mt-2">
+                                                                    <input type="radio" id="productdiscountRadio5" name="productdiscountRadio1" class="form-check-input">
+                                                                    <label class="custom-control-label" for="productdiscountRadio5">40% or more</label>
+                                                                </div>
+                                                                <div class="form-check mt-2">
+                                                                    <input type="radio" id="productdiscountRadio4" name="productdiscountRadio1" class="form-check-input">
+                                                                    <label class="custom-control-label" for="productdiscountRadio4">30% or more</label>
+                                                                </div>
+                                                                <div class="form-check mt-2">
+                                                                    <input type="radio" id="productdiscountRadio3" name="productdiscountRadio1" class="form-check-input">
+                                                                    <label class="custom-control-label" for="productdiscountRadio3">25% or more</label>
+                                                                </div>
+                                                                <div class="form-check mt-2">
+                                                                    <input type="radio" id="productdiscountRadio2" name="productdiscountRadio1" class="form-check-input">
+                                                                    <label class="custom-control-label" for="productdiscountRadio2">10% or more</label>
+                                                                </div>
+                                                                <div class="form-check mt-2">
+                                                                    <input type="radio" id="productdiscountRadio1" name="productdiscountRadio1" class="form-check-input">
+                                                                    <label class="custom-control-label" for="productdiscountRadio1">Less than 10%</label>
+                                                                </div>
+                                                            </div>
+                
+                                                        </div>
+                                                </div>
+            
+                                                <div class="border p-3 rounded mt-4">
+                                                        <h5 class="font-size-16 mb-0 custom-accordion"><a href="#collapseExample3" class="text-dark d-block" data-bs-toggle="collapse">Customer Rating <i class="mdi mdi-minus float-end accor-plus-icon"></i></a></h5>
+            
+                                                        <div class="collapse show" id="collapseExample3">
+                
+                                                            <div class="mt-4">
+                                                                <div class="form-check mt-2">
+                                                                    <input type="radio" id="productratingRadio5" name="productratingRadio1" class="form-check-input">
+                                                                    <label class="custom-control-label" for="productratingRadio5">5 <i class="mdi mdi-star text-warning"></i>  & Above</label>
+                                                                </div>
+                                                                <div class="form-check mt-2">
+                                                                    <input type="radio" id="productratingRadio1" name="productratingRadio1" class="form-check-input">
+                                                                    <label class="custom-control-label" for="productratingRadio1">4 <i class="mdi mdi-star text-warning"></i>  & Above</label>
+                                                                </div>
+                                                                <div class="form-check mt-2">
+                                                                    <input type="radio" id="productratingRadio2" name="productratingRadio1" class="form-check-input">
+                                                                    <label class="custom-control-label" for="productratingRadio2">3 <i class="mdi mdi-star text-warning"></i>  & Above</label>
+                                                                </div>
+                                                                <div class="form-check mt-2">
+                                                                    <input type="radio" id="productratingRadio3" name="productratingRadio1" class="form-check-input">
+                                                                    <label class="custom-control-label" for="productratingRadio3">2 <i class="mdi mdi-star text-warning"></i>  & Above</label>
+                                                                </div>
+                                                                <div class="form-check mt-2">
+                                                                    <input type="radio" id="productratingRadio4" name="productratingRadio1" class="form-check-input">
+                                                                    <label class="custom-control-label" for="productratingRadio4">1 <i class="mdi mdi-star text-warning"></i></label>
+                                                                </div>
+                                                            </div>
+                
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-9">
+                                                <div class="row">
+                                                    <div class="col-xl-4 col-sm-6">
+                                                        <div class="card">
+                                                           <div class="card-body">
+                                                            <div class="product-img">
+                                                                <div class="product-ribbon  bg-primary">
+                                                                    25% Off
+                                                                </div>
+                                                               
+                                                                <img src="assets/images/product/img-7.png" alt="" class="img-fluid mx-auto d-block">
+                                                            </div>
+
+                                                          
+                                                            
+                                                            <div class="text-center">
+
+                                                                <a href="" class="text-dark">
+                                                                    <h5 class="font-size-18">Home & Office Chair Green</h5>
+                                                                </a>
+    
+                                                                <h4 class="mt-3 mb-0">$200 <span class="font-size-14 text-muted me-2"><del>$240</del></span></h4>
+
+                                                                <div class="mt-3">
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item">
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star-half text-warning"></i>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+
+                                                            </div>
+                                                           </div>
+                                                        </div>
+                                                    </div>
+    
+                                                    <div class="col-xl-4 col-sm-6">
+                                                        <div class="card">
+                                                           <div class="card-body">
+                                                            <div class="product-img">
+
+                                                              
+                                                                <img src="assets/images/product/img-8.png" alt="" class="img-fluid mx-auto d-block">
+                                                            </div>
+                                                            
+                                                            <div class="text-center">
+                                                                <a href="" class="text-dark">
+                                                                    <h5 class="font-size-18">Home & Office Chair Crime</h5>
+                                                                </a>
+    
+                                                                <h4 class="mt-3 mb-0">$280</h4>
+
+                                                                <div class="mt-3">
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item">
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                           </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-xl-4 col-sm-6">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <div class="product-img">
+
+                                                                    <div class="product-ribbon  bg-primary">
+                                                                        25% Off
+                                                                    </div>
+                                                                   
+                                                                   
+                                                                    <img src="assets/images/product/img-9.png" alt="" class="img-fluid mx-auto d-block">
+                                                                </div>
+                                                                
+                                                                <div class="text-center">
+                                                                    <a href="" class="text-dark">
+                                                                        <h5 class="font-size-18">Home & Office Chair White</h5>
+                                                                    </a>
+        
+                                                                    <h4 class="mt-3 mb-0">$380 <span class="font-size-14 text-muted me-2"><del>$420</del></span></h4>
+    
+                                                                    <div class="mt-3">
+                                                                        <ul class="list-inline">
+                                                                            <li class="list-inline-item">
+                                                                                <i class="mdi mdi-star text-warning"></i>
+                                                                                <i class="mdi mdi-star text-warning"></i>
+                                                                                <i class="mdi mdi-star text-warning"></i>
+                                                                                <i class="mdi mdi-star text-warning"></i>
+                                                                                <i class="mdi mdi-star-half text-warning"></i>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-xl-4 col-sm-6">
+                                                        <div class="card">
+                                                           <div class="card-body">
+                                                            <div class="product-img">
+                                                               
+                                                                <img src="assets/images/product/img-10.png" alt="" class="img-fluid mx-auto d-block">
+                                                            </div>
+                                                            
+                                                            <div class="text-center">
+                                                                <a href="" class="text-dark">
+                                                                    <h5 class="font-size-18">Home & Office Chair Coffee</h5>
+                                                                </a>
+    
+                                                                <h4 class="mt-3 mb-0">$520</h4>
+
+                                                                <div class="mt-3">
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item">
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                           </div>
+                                                        </div>
+                                                    </div>
+    
+                                                    <div class="col-xl-4 col-sm-6">
+                                                        <div class="card">
+                                                           <div class="card-body">
+                                                            <div class="product-img">
+
+                                                                <div class="product-ribbon  bg-primary">
+                                                                    25% Off
+                                                                </div>
+                                                               
+                                                                <img src="assets/images/product/img-11.png" alt="" class="img-fluid mx-auto d-block">
+                                                            </div>
+                                                            
+                                                            <div class="text-center">
+                                                                <a href="" class="text-dark">
+                                                                    <h5 class="font-size-18">Home & Office Chair Blue</h5>
+                                                                </a>
+    
+                                                                <h4 class="mt-3 mb-0">$280 <span class="font-size-14 text-muted me-2"><del>$320</del></span></h4>
+
+                                                                <div class="mt-3">
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item">
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star-half text-warning"></i>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                           </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-xl-4 col-sm-6">
+                                                        <div class="card">
+                                                           <div class="card-body">
+                                                            <div class="product-img">
+                                                               
+                                                               
+                                                                <img src="assets/images/product/img-12.png" alt="" class="img-fluid mx-auto d-block">
+                                                                
+                                                            </div>
+                                                            
+                                                            <div class="text-center">
+                                                                <a href="" class="text-dark">
+                                                                    <h5 class="font-size-18">Home & Office Chair Black</h5>
+                                                                </a>
+    
+                                                                <h4 class="mt-3 mb-0">$330 </h4>
+
+                                                                <div class="mt-3">
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item">
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                           </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-xl-4 col-sm-6">
+                                                        <div class="card">
+                                                           <div class="card-body">
+                                                            <div class="product-img">
+                                                               
+                                                                <img src="assets/images/product/img-14.png" alt="" class="img-fluid mx-auto d-block">
+                                                            </div>
+                                                            
+                                                            <div class="text-center">
+                                                                <a href="" class="text-dark">
+                                                                    <h5 class="font-size-18">Home & Office Chair Coffee</h5>
+                                                                </a>
+    
+                                                                <h4 class="mt-3 mb-0">$430</h4>
+
+                                                                <div class="mt-3">
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item">
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                           </div>
+                                                        </div>
+                                                    </div>
+    
+                                                  
+
+                                                    <div class="col-xl-4 col-sm-6">
+                                                        <div class="card">
+                                                           <div class="card-body">
+                                                            <div class="product-img">
+                                                               
+                                                               
+                                                                <img src="assets/images/product/img-13.png" alt="" class="img-fluid mx-auto d-block">
+                                                                
+                                                            </div>
+                                                            
+                                                            <div class="text-center">
+                                                                <a href="" class="text-dark">
+                                                                    <h5 class="font-size-18">Home & Office Chair Black</h5>
+                                                                </a>
+    
+                                                                <h4 class="mt-3 mb-0">$130 </h4>
+
+                                                                <div class="mt-3">
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item">
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                           </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-xl-4 col-sm-6">
+                                                        <div class="card">
+                                                           <div class="card-body">
+                                                            <div class="product-img">
+
+                                                                <div class="product-ribbon  bg-primary">
+                                                                    25% Off
+                                                                </div>
+                                                               
+                                                                <img src="assets/images/product/img-6.png" alt="" class="img-fluid mx-auto d-block">
+                                                            </div>
+                                                            
+                                                            <div class="text-center">
+                                                                <a href="" class="text-dark">
+                                                                    <h5 class="font-size-18">Home & Office Chair Dark</h5>
+                                                                </a>
+    
+                                                                <h4 class="mt-3 mb-0">$220 <span class="font-size-14 text-muted me-2"><del>$320</del></span></h4>
+
+                                                                <div class="mt-3">
+                                                                    <ul class="list-inline">
+                                                                        <li class="list-inline-item">
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star text-warning"></i>
+                                                                            <i class="mdi mdi-star-half text-warning"></i>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                           </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-xl-12">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <div>
+                                                                            <p class="mb-sm-0 mt-2">Page <span class="font-weight-bold">2</span> Of <span class="font-weight-bold">113</span></p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="float-sm-end">
+                                                                            <ul class="pagination pagination-rounded mb-sm-0">
+                                                                                <li class="page-item disabled">
+                                                                                    <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
+                                                                                </li>
+                                                                                <li class="page-item">
+                                                                                    <a href="#" class="page-link">1</a>
+                                                                                </li>
+                                                                                <li class="page-item active">
+                                                                                    <a href="#" class="page-link">2</a>
+                                                                                </li>
+                                                                                <li class="page-item">
+                                                                                    <a href="#" class="page-link">3</a>
+                                                                                </li>
+                                                                                <li class="page-item">
+                                                                                    <a href="#" class="page-link">4</a>
+                                                                                </li>
+                                                                                <li class="page-item">
+                                                                                    <a href="#" class="page-link">5</a>
+                                                                                </li>
+                                                                                <li class="page-item">
+                                                                                    <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    
+                                                </div>
+    
+                                                
+                                            </div>
+
+                                            
+                            </div>
+                            <!-- end row -->
+
+                        </div>
+        
+                        
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+              
+                
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © GateZone.
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+                <div class="rightbar-title d-flex align-items-center px-3 py-4">
+            
+                    <h5 class="m-0 me-2">Settings</h5>
+
+                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                        <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                </div>
+
+                <!-- Settings -->
+                <hr class="mt-0" />
+                <h6 class="text-center mb-0">Choose Layouts</h6>
+
+                <div class="p-4">
+                    <div class="mb-2">
+                        <img src="assets/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="layout-1">
+                    </div>
+
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input theme-choice" type="checkbox" id="light-mode-switch" checked>
+                        <label class="form-check-label" for="light-mode-switch">Light Mode</label>
+                    </div>
+    
+                    <div class="mb-2">
+                        <img src="assets/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="layout-2">
+                    </div>
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch" data-bsStyle="assets/css/bootstrap-dark.min.css" data-appStyle="assets/css/app-dark.min.css">
+                        <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
+                    </div>
+    
+                    <div class="mb-2">
+                        <img src="assets/images/layouts/layout-3.jpg" class="img-fluid img-thumbnail" alt="layout-3">
+                    </div>
+                    <div class="form-check form-switch mb-5">
+                        <input class="form-check-input theme-choice" type="checkbox" id="rtl-mode-switch" data-appStyle="assets/css/app-rtl.min.css">
+                        <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
+                    </div>
+
+            
+                </div>
+
+            </div> <!-- end slimscroll-menu-->
+        </div>
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/libs/node-waves/waves.min.js"></script>
+
+        <!-- Ion Range Slider-->
+        <script src="assets/libs/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+
+        <!-- init js -->
+        <script src="assets/js/pages/product-filter-range.init.js"></script>
+
+        <script src="assets/js/app.js"></script>
+
+    </body>
+</html>

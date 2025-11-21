@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GadgetZone | Collection</title>
+  <link rel="stylesheet" href="collection.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+   <!-- Navbar -->
+  <header class="fade-in">
+    <div class="logo">GadgetZone</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html" class="active">Collections</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 🔹 Hero Section -->
+    <section class="hero fade-up">
+    <div class="hero-content">
+      <h1>✨ Promo Akhir Tahun 2025 ✨</h1>
+      <p>Dapatkan diskon hingga <strong>50%</strong> untuk produk elektronik pilihan!</p>
+      <button class="btn glow-btn">Lihat Promo</button>
+    </div>
+  </section>
+  
+  <!-- <section class="hero">
+    <div class="hero-content">
+      <h1>🎧 Audio & Tech Gadget Deals</h1>
+      <p>Temukan produk terbaik dengan diskon hingga <strong>30%</strong> untuk gadget pilihanmu!</p>
+      <button class="btn-hero">Shop Now</button>
+    </div>
+  </section> -->
+
+  <!-- 🔹 Category Highlight -->
+  <section class="category">
+    <div class="category-card">
+      <img src="img/Logitech G733 Gaming Headset - Black.jpg" alt="">
+      <div class="category-info">
+        <h3>Headset</h3>
+        <p>Diskon hingga 30%</p>
+      </div>
+    </div>
+
+    <div class="category-card">
+      <img src="img/HUAWEI Band 9 Smart Watch - Black.jpg" alt="">
+      <div class="category-info">
+        <h3>Smart Watch</h3>
+        <p>20% Off</p>
+      </div>
+    </div>
+
+    <div class="category-card">
+      <img src="img/speaker1.jpg" alt="">
+      <div class="category-info">
+        <h3>Speaker</h3>
+        <p>Sale up to 25%</p>
+      </div>
+    </div>
+
+    <div class="category-card">
+      <img src="img/JET BLACK PS4 CUSTOM MODDED CONTROLLER.jpg" alt="">
+      <div class="category-info">
+        <h3>Game Controller</h3>
+        <p>Best Seller</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 Product List -->
+  <section class="product-list">
+    <h2>Top Products</h2>
+    <div class="filters">
+      <button class="active" data-filter="latest">Latest</button>
+      <button data-filter="bestseller">Best Seller</button>
+      <button data-filter="featured">Featured</button>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+      <!-- Produk akan di-load via JS -->
+    </div>
+  </section>
+
+  <!-- 🔹 Promo Banner -->
+  <section class="promo">
+    <div class="promo-content">
+      <h3>💙 Weekend Sale - Get 15% OFF Your Next Order!</h3>
+      <p>Gunakan kode: <strong>GadgetZone15</strong></p>
+      <button class="btn-promo">Gunakan Sekarang</button>
+    </div>
+  </section>
+
+  <script src="collection.js"></script>
+</body>
+</html>

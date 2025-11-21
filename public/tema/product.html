@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GadgetZone | Products</title>
+  <link rel="stylesheet" href="product.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="fade-in">
+    <div class="logo">GadgetZone</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collections</a></li>
+        <li><a href="product.html" class="active">Products</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>🎧 Audio & Tech Gadget Deals</h1>
+      <p>Temukan produk terbaik dengan diskon hingga <strong>30%</strong> untuk gadget pilihanmu!</p>
+      <button class="btn-hero" onclick="scrollToProducts()">Shop Now</button>
+    </div>
+  </section>
+
+  <!-- Kategori -->
+  <section class="popular fade-up" id="produk-section">
+    <h2 style="text-align:center;color: #007bff;">Kategori</h2>
+    <div class="filters">
+      <button class="active" data-filter="all">Semua</button>
+      <button data-filter="smartphone">Smartphone</button>
+      <button data-filter="tablet">Tablet</button>
+      <button data-filter="camera">Camera</button>
+      <button data-filter="game_console">Game Console</button>
+      <button data-filter="smartwatch">Smartwatch</button>
+      <button data-filter="drone">Drone</button>
+      <button data-filter="audio">Audio</button>
+      <button data-filter="computer">Computer</button>
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <!-- Join Section -->
+  <section class="join fade-up">
+    <div class="join-content">
+      <h2>💙 Bergabung dengan Komunitas GadgetZone</h2>
+      <p>Dapatkan update produk terbaru, promo spesial, dan tips teknologi langsung ke email kamu!</p>
+      <div class="join-input">
+        <input type="email" placeholder="Masukkan email kamu..." />
+        <button class="btn glow-btn">Gabung Sekarang</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer fade-in">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>GadgetZone</h3>
+        <p>Tempat terbaik untuk menemukan inovasi dan teknologi masa kini.  
+        Kami menyediakan produk elektronik berkualitas untuk semua kebutuhan kamu.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 GadgetZone. All rights reserved.</div>
+  </footer>
+
+  <!-- Hubungkan ke JS -->
+  <script src="product.js"></script>
+</body>
+</html>

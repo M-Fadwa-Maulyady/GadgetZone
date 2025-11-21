@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        
+        
+        <meta charset="utf-8" />
+        <title>Customers | GateZone - Admin & Dashboard Template</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesdesign" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- DataTables -->
+        <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <!-- Responsive datatable examples -->
+        <link href="assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />  
+
+        <!-- Bootstrap Css -->
+        <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
+
+    </head>
+
+    
+    <body>
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+           <header id="page-topbar">
+            <div class="navbar-header">
+                <div class="d-flex">
+
+                       <!-- LOGO -->
+                 <div class="navbar-brand-box">
+                    <a href="index.html" class="logo logo-dark">
+                        <span class="logo-lg">
+                             <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='130' height='36' viewBox='0 0 130 36'><text x='0' y='22' font-family='Verdana' font-size='20' fill='%23006ff0'>GadgetZone</text></svg>" alt="logo">
+                        </span>
+                    </a>
+
+                    <a href="index.html" class="logo logo-light">
+                        <span class="logo-sm">
+                            <img src="assets/images/logo-sm.png" alt="" height="22">
+                        </span>
+                        <span class="logo-lg">
+                            <img src="assets/images/logo-light.png" alt="" height="20">
+                        </span>
+                    </a>
+                </div>
+
+                   
+            
+                </div>
+
+                 <!-- Search input -->
+                 <div class="search-wrap" id="search-wrap">
+                    <div class="search-bar">
+                        <input class="search-input form-control" placeholder="Search" />
+                        <a href="#" class="close-search toggle-search" data-target="#search-wrap">
+                            <i class="mdi mdi-close-circle"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <div class="dropdown d-none d-lg-inline-block">
+                        <button type="button" class="btn header-item toggle-search noti-icon waves-effect" data-target="#search-wrap">
+                            <i class="mdi mdi-magnify"></i>
+                        </button>
+                    </div>
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-7.jpg"
+                                alt="Header Avatar">
+                            <span class="d-none d-xl-inline-block ms-1">Fadwa</span>
+                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <!-- item-->
+                            <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle-outline font-size-16 align-middle me-1"></i> Profile</a>
+                            <a class="dropdown-item" href="#"><i class="mdi mdi-wallet-outline font-size-16 align-middle me-1"></i> My Wallet</a>
+                            <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-end">11</span><i class="mdi mdi-cog-outline font-size-16 align-middle me-1"></i> Settings</a>
+                            <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline font-size-16 align-middle me-1"></i> Lock screen</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="#"><i class="mdi mdi-power font-size-16 align-middle me-1 text-danger"></i> Logout</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                            <i class="mdi mdi-cog-outline font-size-20"></i>
+                        </button>
+                    </div>
+            
+                </div>
+            </div>
+        </header>
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="vertical-menu">
+
+                <div data-simplebar class="h-100">
+
+
+                    <div class="user-sidebar text-center">
+                        <div class="dropdown">
+                            <div class="user-img">
+                                <img src="assets/images/users/avatar-7.jpg" alt="" class="rounded-circle">
+                                <span class="avatar-online bg-success"></span>
+                            </div>
+                            <div class="user-info">
+                                <h5 class="mt-3 font-size-16 text-white">Fadwa Bekacor</h5>
+                                <span class="font-size-13 text-white-50">Administrator</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!--- Sidemenu -->
+                  <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        
+
+                        <li>
+                            <a href="index.html" class="waves-effect">
+                                <i class="dripicons-home"></i><span class="badge rounded-pill bg-info float-end"></span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="ecommerce-add-product.html" class="waves-effect">
+                                <i class="fa-solid fa-basket-shopping"></i></i><span class="badge rounded-pill bg-info float-end"></span>
+                                <span>Add Product</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="ecommerce-product-detail.html" class="waves-effect">
+                                <i class="fa-solid fa-eye"></i><span class="badge rounded-pill bg-info float-end"></span>
+                                <span>Product Detail</span>
+                            </a>
+                        </li>
+
+                         <li>
+                            <a href="ecommerce-customers.html" class="waves-effect">
+                                <i class="fa-solid fa-users"></i><span class="badge rounded-pill bg-info float-end"></span>
+                                <span>Customers</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="ecommerce-orders.html" class="waves-effect">
+                                <i class="fa-solid fa-truck-fast"></i><span class="badge rounded-pill bg-info float-end">3</span>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="ecommerce-checkout.html" class="waves-effect">
+                                <i class="fa-solid fa-cart-shopping"></i><span class="badge rounded-pill bg-info float-end">3</span>
+                                <span>Checkout</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="ecommerce-shops.html" class="waves-effect">
+                                <i class="fa-solid fa-warehouse"></i><span class="badge rounded-pill bg-info float-end"></span>
+                                <span>Shop</span>
+                            </a>
+                        </li>         
+                    </ul>
+                </div>
+                    <!-- Sidebar -->
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+
+                    <!-- start page title -->
+                    <div class="page-title-box">
+                        <div class="container-fluid">
+                         <div class="row align-items-center">
+                             <div class="col-sm-6">
+                                 <div class="page-title">
+                                     <h4>Customers</h4>
+                                         <ol class="breadcrumb m-0">
+                                             <li class="breadcrumb-item"><a href="javascript: void(0);">GateZone</a></li>
+                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
+                                             <li class="breadcrumb-item active">Customers</li>
+                                         </ol>
+                                 </div>
+                             </div>
+                             <div class="col-sm-6">
+                                <div class="float-end d-none d-sm-block">
+                                    <a href="" class="btn btn-success">Add Widget</a>
+                                </div>
+                             </div>
+                         </div>
+                        </div>
+                     </div>
+                     <!-- end page title -->    
+
+
+                    <div class="container-fluid">
+
+                        <div class="page-content-wrapper">
+
+                        
+
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div>
+                                                <a href="javascript:void(0);" class="btn btn-success mb-2"><i class="mdi mdi-plus me-2"></i> Add Customer</a>
+                                            </div>
+                                            <div class="table-responsive mt-3">
+                                                <table class="table table-centered datatable dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                                    <thead class="thead-light">
+                                                        <tr>
+                                                            <th style="width: 20px;">
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="customercheck">
+                                                                    <label class="form-check-label" for="customercheck">&nbsp;</label>
+                                                                </div>
+                                                            </th>
+                                                            <th>Customer</th>
+                                                            <th>Email</th>
+                                                            <th>Phone</th>
+                                                            <th>Wallet Balance</th>
+                                                            <th>Joining Date</th>
+                                                            <th style="width: 120px;">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="customercheck1">
+                                                                    <label class="form-check-label" for="customercheck1">&nbsp;</label>
+                                                                </div>
+                                                            </td>
+                                                            
+                                                            <td>Carolyn Harvey</td>
+                                                            <td>CarolynHarvey@rhyta.com</td>
+                                                            <td>580-464-4694</td>
+                                                            
+                                                            <td>
+                                                                $ 3245
+                                                            </td>
+                                                            <td>
+                                                                06 Apr, 2020
+                                                            </td>
+                                                            <td id="tooltip-container0">
+                                                                <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                                <a href="javascript:void(0);" class="text-danger" data-bs-container="#tooltip-container0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="customercheck2">
+                                                                    <label class="form-check-label" for="customercheck2">&nbsp;</label>
+                                                                </div>
+                                                            </td>
+                                                            
+                                                            <td>Angelyn Hardin</td>
+                                                            <td>AngelynHardin@dayrep.com</td>
+                                                            <td>913-248-2690</td>
+                                                            
+                                                            <td>
+                                                                $ 2435
+                                                            </td>
+                                                            <td>
+                                                                05 Apr, 2020
+                                                            </td>
+                                                            <td id="tooltip-container1">
+                                                                <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                                <a href="javascript:void(0);" class="text-danger" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="customercheck3">
+                                                                    <label class="form-check-label" for="customercheck3">&nbsp;</label>
+                                                                </div>
+                                                            </td>
+                                                            
+                                                            <td>Carrie Thompson</td>
+                                                            <td>CarrieThompson@rhyta.com</td>
+                                                            <td>734-819-9286</td>
+                                                            
+                                                            <td>
+                                                                $ 2653
+                                                            </td>
+                                                            <td>
+                                                                04 Apr, 2020
+                                                            </td>
+                                                            <td id="tooltip-container2">
+                                                                <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                                <a href="javascript:void(0);" class="text-danger" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="customercheck4">
+                                                                    <label class="form-check-label" for="customercheck4">&nbsp;</label>
+                                                                </div>
+                                                            </td>
+                                                            
+                                                            <td>Kathleen Haller</td>
+                                                            <td>KathleenHaller@dayrep.com</td>
+                                                            <td>313-742-3333</td>
+                                                            
+                                                            <td>
+                                                                $ 2135
+                                                            </td>
+                                                            <td>
+                                                                03 Apr, 2020
+                                                            </td>
+                                                            <td id="tooltip-container3">
+                                                                <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container3" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                                <a href="javascript:void(0);" class="text-danger" data-bs-container="#tooltip-container3" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="customercheck5">
+                                                                    <label class="form-check-label" for="customercheck5">&nbsp;</label>
+                                                                </div>
+                                                            </td>
+                                                            
+                                                            <td>Martha Beasley</td>
+                                                            <td>MarthaBeasley@teleworm.us</td>
+                                                            <td>301-330-5745</td>
+                                                            
+                                                            <td>
+                                                                $ 2698
+                                                            </td>
+                                                            <td>
+                                                                02 Apr, 2020
+                                                            </td>
+                                                            <td id="tooltip-container4">
+                                                                <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container4" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                                <a href="javascript:void(0);" class="text-danger" data-bs-container="#tooltip-container4" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="customercheck6">
+                                                                    <label class="form-check-label" for="customercheck6">&nbsp;</label>
+                                                                </div>
+                                                            </td>
+                                                            
+                                                            <td>Kathryn Hudson</td>
+                                                            <td>KathrynHudson@armyspy.com</td>
+                                                            <td>414-453-5725</td>
+                                                            
+                                                            <td>
+                                                                $ 2758
+                                                            </td>
+                                                            <td>
+                                                                02 Apr, 2020
+                                                            </td>
+                                                            <td id="tooltip-container5">
+                                                                <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container5" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                                <a href="javascript:void(0);" class="text-danger" data-bs-container="#tooltip-container5" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="customercheck7">
+                                                                    <label class="form-check-label" for="customercheck7">&nbsp;</label>
+                                                                </div>
+                                                            </td>
+                                                            
+                                                            <td>Robert Bott</td>
+                                                            <td>RobertBott@armyspy.com</td>
+                                                            <td>712-237-9899</td>
+                                                            
+                                                            <td>
+                                                                $ 2836
+                                                            </td>
+                                                            <td>
+                                                                01 Apr, 2020
+                                                            </td>
+                                                            <td id="tooltip-container6">
+                                                                <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container6" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                                <a href="javascript:void(0);" class="text-danger" data-bs-container="#tooltip-container6" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="customercheck8">
+                                                                    <label class="form-check-label" for="customercheck8">&nbsp;</label>
+                                                                </div>
+                                                            </td>
+                                                            
+                                                            <td>Mary McDonald</td>
+                                                            <td>MaryMcDonald@armyspy.com</td>
+                                                            <td>317-510-25554</td>
+                                                            
+                                                            <td>
+                                                                $ 3245
+                                                            </td>
+                                                            <td>
+                                                                31 Mar, 2020
+                                                            </td>
+                                                            <td id="tooltip-container7">
+                                                                <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container7" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                                <a href="javascript:void(0);" class="text-danger" data-bs-container="#tooltip-container7" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="customercheck9">
+                                                                    <label class="form-check-label" for="customercheck9">&nbsp;</label>
+                                                                </div>
+                                                            </td>
+                                                            
+                                                            <td>Keith Rainey</td>
+                                                            <td>KeithRainey@jourrapide.com</td>
+                                                            <td>214-712-1810</td>
+                                                            
+                                                            <td>
+                                                                $ 3125
+                                                            </td>
+                                                            <td>
+                                                                30 Mar, 2020
+                                                            </td>
+                                                            <td id="tooltip-container8">
+                                                                <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container8" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                                <a href="javascript:void(0);" class="text-danger" data-bs-container="#tooltip-container8" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="customercheck10">
+                                                                    <label class="form-check-label" for="customercheck10">&nbsp;</label>
+                                                                </div>
+                                                            </td>
+                                                            
+                                                            <td>Anthony Russo</td>
+                                                            <td>AnthonyRusso@jourrapide.com</td>
+                                                            <td>412-371-8864</td>
+                                                            
+                                                            <td>
+                                                                $ 2456
+                                                            </td>
+                                                            <td>
+                                                                30 Mar, 2020
+                                                            </td>
+                                                            <td id="tooltip-container9">
+                                                                <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container9" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                                <a href="javascript:void(0);" class="text-danger" data-bs-container="#tooltip-container9" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="customercheck11">
+                                                                    <label class="form-check-label" for="customercheck11">&nbsp;</label>
+                                                                </div>
+                                                            </td>
+                                                            
+                                                            <td>Donna Betz</td>
+                                                            <td>DonnaBetz@jourrapide.com</td>
+                                                            <td>626-583-5779</td>
+                                                            
+                                                            <td>
+                                                                $ 3423
+                                                            </td>
+                                                            <td>
+                                                                29 Mar, 2020
+                                                            </td>
+                                                            <td id="tooltip-container10">
+                                                                <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container10" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                                <a href="javascript:void(0);" class="text-danger" data-bs-container="#tooltip-container10" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" class="form-check-input" id="customercheck12">
+                                                                    <label class="form-check-label" for="customercheck12">&nbsp;</label>
+                                                                </div>
+                                                            </td>
+                                                            
+                                                            <td>Angie Andres</td>
+                                                            <td>AngieAndres@armyspy.com</td>
+                                                            <td>213-494-4527</td>
+                                                            
+                                                            <td>
+                                                                $ 3245
+                                                            </td>
+                                                            <td>
+                                                                28 Apr, 2020
+                                                            </td>
+                                                            <td id="tooltip-container11">
+                                                                <a href="javascript:void(0);" class="me-3 text-primary" data-bs-container="#tooltip-container11" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                                <a href="javascript:void(0);" class="text-danger" data-bs-container="#tooltip-container11" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+
+                        </div>
+        
+                        
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+              
+                
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © GateZone.
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+                <div class="rightbar-title d-flex align-items-center px-3 py-4">
+            
+                    <h5 class="m-0 me-2">Settings</h5>
+
+                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                        <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                </div>
+
+                <!-- Settings -->
+                <hr class="mt-0" />
+                <h6 class="text-center mb-0">Choose Layouts</h6>
+
+                <div class="p-4">
+                    <div class="mb-2">
+                        <img src="assets/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="layout-1">
+                    </div>
+
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input theme-choice" type="checkbox" id="light-mode-switch" checked>
+                        <label class="form-check-label" for="light-mode-switch">Light Mode</label>
+                    </div>
+    
+                    <div class="mb-2">
+                        <img src="assets/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="layout-2">
+                    </div>
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch" data-bsStyle="assets/css/bootstrap-dark.min.css" data-appStyle="assets/css/app-dark.min.css">
+                        <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
+                    </div>
+    
+                    <div class="mb-2">
+                        <img src="assets/images/layouts/layout-3.jpg" class="img-fluid img-thumbnail" alt="layout-3">
+                    </div>
+                    <div class="form-check form-switch mb-5">
+                        <input class="form-check-input theme-choice" type="checkbox" id="rtl-mode-switch" data-appStyle="assets/css/app-rtl.min.css">
+                        <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
+                    </div>
+
+            
+                </div>
+
+            </div> <!-- end slimscroll-menu-->
+        </div>
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/libs/node-waves/waves.min.js"></script>
+
+        <!-- Required datatable js -->
+        <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+        
+        <!-- Responsive examples -->
+        <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+        <script src="assets/js/pages/ecommerce-datatables.init.js"></script>
+
+        <script src="assets/js/app.js"></script>
+
+    </body>
+</html>

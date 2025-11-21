@@ -1,0 +1,145 @@
+/* ===== General Style ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f6f8fc;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Navbar ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #0066ff, #00c3ff);
+  color: white;
+  padding: 20px 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 1.6em;
+  font-weight: 700;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  text-shadow: 0 0 10px white;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #0066ff, #00c3ff);
+  color: white;
+  border-radius: 0 0 40px 40px;
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2em;
+}
+
+/* ===== Blog Grid ===== */
+.blog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 60px 80px;
+}
+
+.blog-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: 0.4s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.blog-content {
+  padding: 20px;
+}
+
+.blog-content h3 {
+  margin-bottom: 10px;
+  color: #0066ff;
+}
+
+.blog-content p {
+  color: #555;
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+.btn {
+  background: linear-gradient(90deg, #0066ff, #00c3ff);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 25px;
+  background-color: #fff;
+  margin-top: 50px;
+  color: #444;
+  font-size: 0.9em;
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.05);
+}
+
+/* Animations */
+.fade-in { animation: fadeIn 0.8s ease; }
+.fade-up { animation: fadeUp 1s ease; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
