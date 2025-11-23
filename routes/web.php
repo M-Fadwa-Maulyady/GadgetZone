@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 // HALAMAN PERTAMA = LANDING (PUBLIC)
@@ -28,5 +29,13 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         return view('user.landingLogin');
     })->name('user.landingLogin');
 });
+
+
+Route::get('/data-customer', [CustomerController::class, 'index'])->name('dataCustomer');
+    Route::get('/customer/create', [CustomerController::class, 'create'])->name('createCustomer');
+    Route::post('/customer/store', [CustomerController::class, 'store'])->name('storeCustomer');
+    Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('editCustomer');
+    Route::put('/customer/update/{id}', [CustomerController::class, 'update'])->name('updateCustomer');
+    Route::delete('/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('deleteCustomer');
 
 
