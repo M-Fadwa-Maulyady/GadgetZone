@@ -7,42 +7,7 @@ body {
   padding: 0;
 }
 
-/* ==== HEADER ==== */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(90deg, #0066ff, #00c3ff);
-  color: white;
-  padding: 20px 70px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
 
-.logo {
-  font-size: 1.6em;
-  font-weight: 700;
-}
-
-nav ul {
-  display: flex;
-  list-style: none;
-  gap: 25px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-  text-shadow: 0 0 10px white;
-}
 
 /* ==== HERO SECTION ==== */
 .hero {

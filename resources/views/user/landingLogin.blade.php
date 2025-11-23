@@ -1,5 +1,4 @@
 <x-layoutUser>
-    <h1>Demis gay</h1>
        <!-- hero + right promos -->
     <section class="hero-section">
       <div class="hero-left">
