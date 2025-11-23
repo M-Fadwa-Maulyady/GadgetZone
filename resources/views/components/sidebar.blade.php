@@ -34,12 +34,12 @@
                         <li>
                             <a href="ecommerce-add-product.html" class="waves-effect">
                                 <i class="fa-solid fa-basket-shopping"></i></i><span class="badge rounded-pill bg-info float-end"></span>
-                                <span>Add Product</span>
+                                <span>Product</span>
                             </a>
                         </li>
 
                          <li>
-                            <a href="ecommerce-customers.html" class="waves-effect">
+                            <a href="{{ route('dataCustomer') }}" class="waves-effect {{ request()->routeIs('dataCustomer') ? 'active' : '' }}">
                                 <i class="fa-solid fa-users"></i><span class="badge rounded-pill bg-info float-end"></span>
                                 <span>Customers</span>
                             </a>
@@ -61,8 +61,8 @@
 
                         <li>
                             <a href="ecommerce-shops.html" class="waves-effect">
-                                <i class="fa-solid fa-warehouse"></i><span class="badge rounded-pill bg-info float-end"></span>
-                                <span>Shop</span>
+                                <i class="fa-solid fa-book"></i><span class="badge rounded-pill bg-info float-end"></span>
+                                <span>Laporan</span>
                             </a>
                         </li>         
                     </ul>
