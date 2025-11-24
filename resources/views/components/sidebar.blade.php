@@ -48,6 +48,12 @@
                         <span>Orders</span>
                     </a>
                 </li>
+                        <li>
+                            <a href="{{ route('dataProduk.index') }}" class="waves-effect {{ request()->routeIs('dataProduk') ? 'active' : '' }}">
+                                <i class="fa-solid fa-basket-shopping"></i></i><span class="badge rounded-pill bg-info float-end"></span>
+                                <span>Product</span>
+                            </a>
+                        </li>
 
                 <!-- CHECKOUT FINAL ROUTE -->
                 <li>
