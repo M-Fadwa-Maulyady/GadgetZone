@@ -42,6 +42,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::post('/admin/orders/store', [AdminOrderController::class, 'store'])
         ->name('admin.orders.store');
+
+        Route::get('/admin/orders', [AdminOrderController::class, 'index'])->name('admin.orders');
+Route::get('/admin/orders/{id}', [AdminOrderController::class, 'show'])->name('admin.orders.show');
+Route::put('/admin/orders/{id}/status', [AdminOrderController::class, 'updateStatus'])->name('admin.orders.status');
+
 });
 
 
