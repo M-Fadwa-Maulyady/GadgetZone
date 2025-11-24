@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
 // HALAMAN PERTAMA = LANDING (PUBLIC)
@@ -37,5 +38,14 @@ Route::get('/data-customer', [CustomerController::class, 'index'])->name('dataCu
     Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('editCustomer');
     Route::put('/customer/update/{id}', [CustomerController::class, 'update'])->name('updateCustomer');
     Route::delete('/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('deleteCustomer');
+
+    Route::prefix('admin/produk')->name('dataProduk.')->group(function () {
+    Route::get('/', [ProdukController::class, 'index'])->name('index');
+    Route::get('/create', [ProdukController::class, 'create'])->name('create');
+    Route::post('/store', [ProdukController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [ProdukController::class, 'edit'])->name('edit');
+    Route::put('/update/{id}', [ProdukController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [ProdukController::class, 'destroy'])->name('delete');
+});
 
 

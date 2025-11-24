@@ -32,7 +32,7 @@
                         </li>
 
                         <li>
-                            <a href="ecommerce-add-product.html" class="waves-effect">
+                            <a href="{{ route('dataProduk.index') }}" class="waves-effect {{ request()->routeIs('dataProduk') ? 'active' : '' }}">
                                 <i class="fa-solid fa-basket-shopping"></i></i><span class="badge rounded-pill bg-info float-end"></span>
                                 <span>Product</span>
                             </a>
