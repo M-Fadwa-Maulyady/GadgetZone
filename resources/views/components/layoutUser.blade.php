@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>GadgetZone — Demo</title>
   <link rel="stylesheet" href="{{ asset('tema/style.css') }}" />
+  <link rel="stylesheet" href="{{ asset('tema/product.css') }}" />
+  
 </head>
 <body>
   
@@ -16,5 +18,6 @@
     <x-footerUser></x-footerUser>
 
   <script src="{{ asset('tema/script.js') }}"></script>
+  <script src="{{ asset('tema/product.js') }}"></script>
 </body>
 </html>

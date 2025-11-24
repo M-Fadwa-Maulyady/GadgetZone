@@ -2,15 +2,20 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AdminCheckoutController;
+use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\UserProductController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
-// HALAMAN PERTAMA = LANDING (PUBLIC)
+
+// ================= PUBLIC (Tidak butuh login) =================
 Route::get('/', function () {
     return view('user.landing');
 })->name('home');
 
-// LOGIN & REGISTER (PUBLIC)
+
+// ================= LOGIN & REGISTER =================
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 
@@ -19,20 +24,49 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.po
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
+// ================= ADMIN PAGES =================
 Route::middleware(['auth', 'role:admin'])->group(function () {
+
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    // Checkout
+    Route::get('/admin/checkout', [AdminCheckoutController::class, 'index'])
+        ->name('admin.checkout');
+
+    // Orders
+    Route::get('/admin/orders', [AdminOrderController::class, 'index'])
+        ->name('admin.orders');
+
+    Route::post('/admin/orders/store', [AdminOrderController::class, 'store'])
+        ->name('admin.orders.store');
 });
 
+
+// ================= USER PAGES =================
 Route::middleware(['auth', 'role:user'])->group(function () {
+
+    // Landing user setelah login
     Route::get('/landingLogin', function () {
-        return view('user.landingLogin');
-    })->name('user.landingLogin');
+    return view('user.landingLogin');
+})->name('user.landingLogin');
+
+    // Product page
+    Route::get('/products', function () {
+        return view('user.product');
+    })->name('productUser');
 });
 
 
+// ================= CUSTOMER CRUD =================
 Route::get('/data-customer', [CustomerController::class, 'index'])->name('dataCustomer');
+Route::get('/customer/create', [CustomerController::class, 'create'])->name('createCustomer');
+Route::post('/customer/store', [CustomerController::class, 'store'])->name('storeCustomer');
+Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('editCustomer');
+Route::put('/customer/update/{id}', [CustomerController::class, 'update'])->name('updateCustomer');
+Route::delete('/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('deleteCustomer');
     Route::get('/customer/create', [CustomerController::class, 'create'])->name('createCustomer');
     Route::post('/customer/store', [CustomerController::class, 'store'])->name('storeCustomer');
     Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('editCustomer');
@@ -47,5 +81,4 @@ Route::get('/data-customer', [CustomerController::class, 'index'])->name('dataCu
     Route::put('/update/{id}', [ProdukController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [ProdukController::class, 'destroy'])->name('delete');
 });
-
 

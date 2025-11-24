@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GadgetZone | Products</title>
-  <link rel="stylesheet" href="product.css">
-</head>
-<body>
+<x-layoutUser>
 
-
-
-  <!-- Hero -->
+     <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
       <h1>🎧 Audio & Tech Gadget Deals</h1>
@@ -49,19 +39,4 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer fade-in">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <h3>GadgetZone</h3>
-        <p>Tempat terbaik untuk menemukan inovasi dan teknologi masa kini.  
-        Kami menyediakan produk elektronik berkualitas untuk semua kebutuhan kamu.</p>
-      </div>
-    </div>
-    <div class="footer-bottom">© 2025 GadgetZone. All rights reserved.</div>
-  </footer>
-
-  <!-- Hubungkan ke JS -->
-  <script src="product.js"></script>
-</body>
-</html>
+</x-layoutUser>
