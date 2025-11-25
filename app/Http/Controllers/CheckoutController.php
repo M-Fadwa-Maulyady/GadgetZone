@@ -63,4 +63,9 @@ class CheckoutController extends Controller
 
         return redirect()->route('user.orders')->with('success', 'Pesanan berhasil dibuat!');
     }
+
+    public function success() {
+    return view('user.checkout.success');
+}
+
 }

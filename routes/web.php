@@ -66,11 +66,16 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     })->name('productUser');
 
     // ---------- CHECKOUT ----------
-    Route::get('/checkout', [CheckoutController::class, 'index'])
-        ->name('user.checkout');
+Route::get('/checkout', [CheckoutController::class, 'index'])
+    ->name('user.checkout');
 
-    Route::post('/checkout/process', [CheckoutController::class, 'process'])
-        ->name('user.checkout.process');
+Route::post('/checkout/process', [CheckoutController::class, 'process'])
+    ->name('user.checkout.process');
+
+    Route::get('/checkout/sukses', [CheckoutController::class, 'success'])
+    ->name('user.checkout.success');
+
+
 });
 
 
