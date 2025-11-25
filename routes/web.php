@@ -6,6 +6,8 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CheckoutController;
+
 
 
 // ================= PUBLIC =================
@@ -64,7 +66,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/products', function () {
         return view('user.product');
     })->name('productUser');
-
+  
     // ---------- CHECKOUT ----------
 Route::get('/checkout', [CheckoutController::class, 'index'])
     ->name('user.checkout');
@@ -76,6 +78,15 @@ Route::post('/checkout/process', [CheckoutController::class, 'process'])
     ->name('user.checkout.success');
 
 
+     Route::get('/checkout', [CheckoutController::class, 'index'])
+        ->name('user.checkout');
+
+    Route::post('/checkout', [CheckoutController::class, 'store'])
+        ->name('user.checkout.store');
+
+    Route::get('/checkout/sukses', [CheckoutController::class, 'success'])
+        ->name('user.checkout.success');
+
 });
 
 
@@ -86,3 +97,21 @@ Route::post('/customer/store', [CustomerController::class, 'store'])->name('stor
 Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('editCustomer');
 Route::put('/customer/update/{id}', [CustomerController::class, 'update'])->name('updateCustomer');
 Route::delete('/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('deleteCustomer');
+
+    Route::get('/customer/create', [CustomerController::class, 'create'])->name('createCustomer');
+    Route::post('/customer/store', [CustomerController::class, 'store'])->name('storeCustomer');
+    Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('editCustomer');
+    Route::put('/customer/update/{id}', [CustomerController::class, 'update'])->name('updateCustomer');
+    Route::delete('/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('deleteCustomer');
+
+    Route::prefix('admin/produk')->name('dataProduk.')->group(function () {
+    Route::get('/', [ProdukController::class, 'index'])->name('index');
+    Route::get('/create', [ProdukController::class, 'create'])->name('create');
+    Route::post('/store', [ProdukController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [ProdukController::class, 'edit'])->name('edit');
+    Route::put('/update/{id}', [ProdukController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [ProdukController::class, 'destroy'])->name('delete');
+
+
+});
+
