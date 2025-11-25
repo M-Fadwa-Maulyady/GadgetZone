@@ -618,7 +618,27 @@
 
                                                         <ul class="pager wizard twitter-bs-wizard-pager-link">
                                                             <li class="previous"><a href="#"><i class="mdi mdi-arrow-left me-1"></i> Shipping Info</a></li>
-                                                            <li class="float-end"><a href="#"> Complete order <i class="mdi mdi-arrow-right ms-1"></i></a></li>
+                                                            <li class="float-end">
+
+    <form action="{{ route('admin.checkout.process') }}" method="POST" id="checkoutForm">
+        @csrf
+
+        {{-- TOTAL PRICE --}}
+        <input type="hidden" name="total_price" value="{{ $totalPrice }}">
+
+        {{-- SHIPPING (diambil dari Billing Address textarea) --}}
+        <input type="hidden" name="shipping_address" id="shipping_address">
+
+        {{-- PAYMENT METHOD --}}
+        <input type="hidden" name="payment_method" id="payment_method">
+
+        <button type="submit" class="btn btn-success">
+            Complete Order <i class="mdi mdi-arrow-right ms-1"></i>
+        </button>
+    </form>
+
+</li>
+
                                                         </ul>
 
                                                     </div>
@@ -698,6 +718,46 @@
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // ==============================
+    // 1. SET SHIPPING ADDRESS OTOMATIS
+    // ==============================
+    const billingAddress = document.getElementById('billing-address');
+    const shippingField = document.getElementById('shipping_address');
+
+    if (billingAddress) {
+        shippingField.value = billingAddress.value; // Set default
+        billingAddress.addEventListener('keyup', function () {
+            shippingField.value = this.value;
+        });
+    }
+
+    // ==============================
+    // 2. SET PAYMENT METHOD OTOMATIS
+    // ==============================
+    document.querySelectorAll('#pills-tab a').forEach(el => {
+
+        el.addEventListener('click', function () {
+            
+            let method = this.innerText.trim();
+
+            if (method.includes("Credit")) method = "credit_card";
+            if (method.includes("Paypal")) method = "paypal";
+            if (method.includes("Cash")) method = "cod";
+
+            document.getElementById('payment_method').value = method;
+        });
+
+    });
+
+    // Set default payment method ketika halaman dibuka
+    document.getElementById('payment_method').value = "credit_card";
+
+});
+</script>
 
 
                 

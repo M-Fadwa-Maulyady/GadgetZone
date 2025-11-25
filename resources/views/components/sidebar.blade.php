@@ -43,20 +43,11 @@
 
                 <!-- ORDER FINAL ROUTE -->
                 <li>
-                    {{-- <a href="{{ route('admin.orders') }}"
+                    <a href="{{ route('admin.orders') }}"
                        class="waves-effect {{ request()->routeIs('admin.orders') ? 'active' : '' }}">
                         <i class="fa-solid fa-truck-fast"></i>
                         <span>Orders</span>
-                    </a> --}}
-                </li>
-
-                <!-- CHECKOUT FINAL ROUTE -->
-                <li>
-                    {{-- <a href="{{ route('admin.checkout') }}"
-                       class="waves-effect {{ request()->routeIs('admin.checkout') ? 'active' : '' }}">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span>Checkout</span>
-                    </a> --}}
+                    </a>
                 </li>
 
                 <li>
