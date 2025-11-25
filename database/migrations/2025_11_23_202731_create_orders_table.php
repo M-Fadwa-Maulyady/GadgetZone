@@ -10,19 +10,16 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-
-            // Data customer
-            $table->string('billing_name');
-            $table->string('billing_email')->nullable();
-            $table->string('billing_phone')->nullable();
-
-            // Total harga
-            $table->integer('total_price');
-
-            // Status pembayaran: paid/unpaid/pending
-            $table->enum('payment_status', ['paid', 'unpaid', 'pending'])->default('pending');
-
+            $table->unsignedBigInteger('user_id');
+            $table->decimal('total_price', 12, 2);
+            $table->string('payment_method')->nullable();
+            $table->text('shipping_address');
+            $table->string('status')->default('pending'); 
             $table->timestamps();
+
+            $table->foreign('user_id')
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
         });
     }
 

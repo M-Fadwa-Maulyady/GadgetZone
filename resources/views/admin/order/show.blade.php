@@ -36,15 +36,19 @@
                                 </p>
 
                                 <p><strong>Billing Name:</strong><br>
-                                    {{ $order->billing_name }}
+                                    {{ $order->user->name ?? 'Unknown User' }}
                                 </p>
 
                                 <p><strong>Email:</strong><br>
-                                    {{ $order->billing_email }}
+                                    {{ $order->user->email ?? '-' }}
                                 </p>
 
                                 <p><strong>Phone:</strong><br>
-                                    {{ $order->billing_phone }}
+                                    {{ $order->user->phone ?? '-' }}
+                                </p>
+
+                                <p><strong>Shipping Address:</strong><br>
+                                    {{ $order->shipping_address }}
                                 </p>
 
                                 <p><strong>Total Price:</strong><br>
@@ -55,15 +59,15 @@
 
                                 <h4 class="header-title mb-3">Payment Status</h4>
 
-                                <form action="{{ url('admin/orders/'.$order->id.'/status') }}" method="POST">
+                                <form action="{{ route('admin.orders.updateStatus', $order->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
 
                                     <select name="payment_status" class="form-select mb-3">
-                                        <option value="pending"  {{ $order->payment_status == 'pending' ? 'selected' : '' }}>Pending</option>
-                                        <option value="paid"     {{ $order->payment_status == 'paid' ? 'selected' : '' }}>Paid</option>
-                                        <option value="unpaid"   {{ $order->payment_status == 'unpaid' ? 'selected' : '' }}>Unpaid</option>
-                                        <option value="canceled" {{ $order->payment_status == 'canceled' ? 'selected' : '' }}>Canceled</option>
+                                        <option value="pending"  {{ $order->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                                        <option value="paid"     {{ $order->status == 'paid' ? 'selected' : '' }}>Paid</option>
+                                        <option value="unpaid"   {{ $order->status == 'unpaid' ? 'selected' : '' }}>Unpaid</option>
+                                        <option value="canceled" {{ $order->status == 'canceled' ? 'selected' : '' }}>Canceled</option>
                                     </select>
 
                                     <button class="btn btn-primary w-100">Update Status</button>
@@ -71,7 +75,40 @@
 
                                 <br>
 
-                                <a href="{{ url('admin/orders') }}" class="btn btn-secondary w-100">Back to Orders</a>
+                                <a href="{{ route('admin.orders') }}" class="btn btn-secondary w-100">Back to Orders</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Items -->
+                    <div class="col-xl-6">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h4 class="header-title mb-3">Order Items</h4>
+
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Qty</th>
+                                            <th>Price</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach($order->items as $item)
+                                            <tr>
+                                                <td>{{ $item->product->name }}</td>
+                                                <td>{{ $item->qty }}</td>
+                                                <td>${{ $item->price }}</td>
+                                                <td>${{ $item->qty * $item->price }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
 
                             </div>
                         </div>
