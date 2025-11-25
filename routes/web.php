@@ -7,6 +7,8 @@ use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\UserProductController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CheckoutController;
+
 
 
 // ================= PUBLIC (Tidak butuh login) =================
@@ -62,6 +64,16 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/products', function () {
         return view('user.product');
     })->name('productUser');
+
+     Route::get('/checkout', [CheckoutController::class, 'index'])
+        ->name('user.checkout');
+
+    Route::post('/checkout', [CheckoutController::class, 'store'])
+        ->name('user.checkout.store');
+
+    Route::get('/checkout/sukses', [CheckoutController::class, 'success'])
+        ->name('user.checkout.success');
+
 });
 
 
@@ -85,5 +97,7 @@ Route::delete('/customer/delete/{id}', [CustomerController::class, 'destroy'])->
     Route::get('/edit/{id}', [ProdukController::class, 'edit'])->name('edit');
     Route::put('/update/{id}', [ProdukController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [ProdukController::class, 'destroy'])->name('delete');
+
+
 });
 
