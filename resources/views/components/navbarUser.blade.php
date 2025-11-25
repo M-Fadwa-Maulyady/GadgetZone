@@ -44,10 +44,10 @@
 
         <a href="#">Collections</a>
 
-        <a href="{{ route('productUser') }}"
+        {{-- <a href="{{ route('productUser') }}"
             class="{{ request()->routeIs('productUser') ? 'active' : '' }}">
             Products
-        </a>
+        </a> --}}
 
         <a href="#">Blog</a>
         <a href="#">Contact</a>

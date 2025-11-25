@@ -25,12 +25,6 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="ecommerce-add-product.html" class="waves-effect">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        <span>Product</span>
-                    </a>
-                </li>
 
                 <li>
                     <a href="{{ route('dataCustomer') }}"
@@ -40,28 +34,29 @@
                     </a>
                 </li>
 
+                <li>
+                     <a href="{{ route('dataProduk.index') }}" class="waves-effect {{ request()->routeIs('dataProduk') ? 'active' : '' }}">
+                        <i class="fa-solid fa-basket-shopping"></i></i><span class="badge rounded-pill bg-info float-end"></span>
+                        <span>Product</span>
+                    </a>
+                </li>
+
                 <!-- ORDER FINAL ROUTE -->
                 <li>
-                    <a href="{{ route('admin.orders') }}"
+                    {{-- <a href="{{ route('admin.orders') }}"
                        class="waves-effect {{ request()->routeIs('admin.orders') ? 'active' : '' }}">
                         <i class="fa-solid fa-truck-fast"></i>
                         <span>Orders</span>
-                    </a>
+                    </a> --}}
                 </li>
-                        <li>
-                            <a href="{{ route('dataProduk.index') }}" class="waves-effect {{ request()->routeIs('dataProduk') ? 'active' : '' }}">
-                                <i class="fa-solid fa-basket-shopping"></i></i><span class="badge rounded-pill bg-info float-end"></span>
-                                <span>Product</span>
-                            </a>
-                        </li>
 
                 <!-- CHECKOUT FINAL ROUTE -->
                 <li>
-                    <a href="{{ route('admin.checkout') }}"
+                    {{-- <a href="{{ route('admin.checkout') }}"
                        class="waves-effect {{ request()->routeIs('admin.checkout') ? 'active' : '' }}">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span>Checkout</span>
-                    </a>
+                    </a> --}}
                 </li>
 
                 <li>
