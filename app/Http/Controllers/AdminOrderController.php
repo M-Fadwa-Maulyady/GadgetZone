@@ -10,8 +10,26 @@ class AdminOrderController extends Controller
     public function index()
     {
         $orders = Order::orderBy('created_at', 'DESC')->get();
-
         return view('admin.order.index', compact('orders'));
+    }
+
+    // DETAIL ORDER (SHOW)
+    public function show($id)
+    {
+        $order = Order::findOrFail($id);
+
+        return view('admin.order.show', compact('order'));
+    }
+
+    // UPDATE STATUS ORDER
+    public function updateStatus(Request $request, $id)
+    {
+        $order = Order::findOrFail($id);
+
+        $order->payment_status = $request->payment_status;
+        $order->save();
+
+        return back()->with('success', 'Status pembayaran berhasil diperbarui.');
     }
 
     // Simpan order baru (misalnya dari checkout)
