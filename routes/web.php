@@ -6,7 +6,6 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CheckoutController;
 
 
 

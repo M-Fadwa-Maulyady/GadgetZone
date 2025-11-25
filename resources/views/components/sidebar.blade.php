@@ -41,14 +41,17 @@
                     </a>
                 </li>
 
-                <!-- ORDER FINAL ROUTE -->
+                <!-- ORDER (ADMIN ONLY) -->
+                @if(auth()->check() && auth()->user()->role == 'admin')
                 <li>
                     <a href="{{ route('admin.orders') }}"
-                       class="waves-effect {{ request()->routeIs('admin.orders') ? 'active' : '' }}">
+                    class="waves-effect {{ request()->routeIs('admin.orders') ? 'active' : '' }}">
                         <i class="fa-solid fa-truck-fast"></i>
                         <span>Orders</span>
                     </a>
                 </li>
+                @endif
+
 
                 <li>
                     <a href="ecommerce-shops.html" class="waves-effect">
