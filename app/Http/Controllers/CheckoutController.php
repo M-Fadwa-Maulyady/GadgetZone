@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
@@ -10,20 +9,18 @@ use App\Models\OrderItem;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 
-class AdminCheckoutController extends Controller
+class CheckoutController extends Controller
 {
     public function index()
     {
-        // Cart admin
-        $cart = session()->get('admin_cart', []);
+        $cart = session()->get('cart', []);
 
-        // Hitung total harga
         $totalPrice = 0;
         foreach ($cart as $item) {
             $totalPrice += $item['price'] * $item['qty'];
         }
 
-        return view('admin.checkout.index', compact('cart', 'totalPrice'));
+        return view('user.checkout.index', compact('cart', 'totalPrice'));
     }
 
     public function process(Request $request)
@@ -33,15 +30,14 @@ class AdminCheckoutController extends Controller
             'payment_method'   => 'required',
         ]);
 
-        $cart = session()->get('admin_cart');
+        $cart = session()->get('cart');
 
         if (!$cart || count($cart) === 0) {
-            return back()->with('error', 'Cart masih kosong');
+            return back()->with('error', 'Keranjang masih kosong');
         }
 
         DB::transaction(function () use ($request, $cart) {
 
-            // Simpan order
             $order = Order::create([
                 'user_id'          => auth()->id(),
                 'total_price'      => $request->total_price,
@@ -50,7 +46,6 @@ class AdminCheckoutController extends Controller
                 'status'           => 'pending',
             ]);
 
-            // Simpan item order
             foreach ($cart as $item) {
                 OrderItem::create([
                     'order_id'   => $order->id,
@@ -59,16 +54,13 @@ class AdminCheckoutController extends Controller
                     'price'      => $item['price'],
                 ]);
 
-                // Kurangi stok produk
                 Product::where('id', $item['id'])
                     ->decrement('stock', $item['qty']);
             }
         });
 
-        // Hapus cart
-        session()->forget('admin_cart');
+        session()->forget('cart');
 
-        return redirect()->route('admin.orders')
-            ->with('success', 'Checkout berhasil disimpan!');
+        return redirect()->route('user.orders')->with('success', 'Pesanan berhasil dibuat!');
     }
 }

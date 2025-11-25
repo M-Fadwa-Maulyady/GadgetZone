@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\AdminCheckoutController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
@@ -30,15 +30,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
-
-
-    // ---------- CHECKOUT ----------
-    Route::get('/admin/checkout', [AdminCheckoutController::class, 'index'])
-        ->name('admin.checkout');
-
-    Route::post('/admin/checkout/process', [AdminCheckoutController::class, 'process'])
-        ->name('admin.checkout.process');
-
 
     // ---------- ORDERS ----------
     Route::get('/admin/orders', [AdminOrderController::class, 'index'])
@@ -73,6 +64,13 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/products', function () {
         return view('user.product');
     })->name('productUser');
+
+    // ---------- CHECKOUT ----------
+    Route::get('/checkout', [CheckoutController::class, 'index'])
+        ->name('user.checkout');
+
+    Route::post('/checkout/process', [CheckoutController::class, 'process'])
+        ->name('user.checkout.process');
 });
 
 
