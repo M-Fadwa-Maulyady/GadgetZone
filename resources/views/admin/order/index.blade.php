@@ -1,59 +1,59 @@
 <x-layoutAdmin>
-@foreach ($orders as $order)
-    <tr>
-        <td>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input">
-            </div>
-        </td>
 
-        <!-- Order ID -->
-        <td>
-            <a href="{{ route('admin.orders.show', $order->id) }}" class="text-dark fw-bold">
-                #{{ $order->id }}
-            </a>
-        </td>
+<div class="container">
 
-        <!-- Date -->
-        <td>{{ $order->created_at->format('d M, Y') }}</td>
+    <h4 class="mb-4">Daftar Pesanan</h4>
 
-        <!-- Billing Name (pakai user->name karena migration lama tidak punya billing_name) -->
-        <td>{{ $order->user->name ?? 'Unknown' }}</td>
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
 
-        <!-- Total -->
-        <td>${{ number_format($order->total_price, 2) }}</td>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ID Pesanan</th>
+                <th>Tanggal</th>
+                <th>Pembeli</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
 
-        <!-- Payment Status (pakai kolom "status" migration lama) -->
-        <td>
-            @if($order->status == 'paid')
-                <div class="badge badge-soft-success font-size-12">Paid</div>
-            @elseif($order->status == 'pending')
-                <div class="badge badge-soft-warning font-size-12">Pending</div>
-            @elseif($order->status == 'unpaid')
-                <div class="badge badge-soft-danger font-size-12">Unpaid</div>
-            @else
-                <div class="badge badge-soft-secondary font-size-12">
-                    {{ ucfirst($order->status) }}
-                </div>
-            @endif
-        </td>
+        <tbody>
+        @forelse($orders as $order)
+            <tr>
+                <td><input type="checkbox"></td>
 
-        <!-- Invoice (placeholder) -->
-        <td>
-            <button class="btn btn-light btn-rounded">
-                Invoice <i class="mdi mdi-download ms-2"></i>
-            </button>
-        </td>
+                <td><a href="{{ route('admin.orders.show', $order->id) }}" class="fw-bold">
+                    #{{ $order->id }}
+                </a></td>
 
-        <!-- Action -->
-        <td>
-            <a href="{{ route('admin.orders.show', $order->id) }}" class="me-3 text-primary" title="Detail">
-                <i class="mdi mdi-eye font-size-18"></i>
-            </a>
-            <a href="javascript:void(0);" class="text-danger" title="Delete">
-                <i class="mdi mdi-trash-can font-size-18"></i>
-            </a>
-        </td>
-    </tr>
-@endforeach
+                <td>{{ $order->created_at->format('d M Y') }}</td>
+
+                <td>{{ $order->user->name ?? 'Unknown' }}</td>
+
+                <td>Rp {{ number_format($order->total_price, 0, ',', '.') }}</td>
+
+                <td>
+                    <span class="badge bg-warning">{{ ucfirst($order->status) }}</span>
+                </td>
+
+                <td>
+                    <a href="{{ route('admin.orders.show', $order->id) }}" class="text-primary">Detail</a>
+                </td>
+            </tr>
+        @empty
+            <tr>
+                <td colspan="7" class="text-center text-muted">
+                    Belum ada pesanan.
+                </td>
+            </tr>
+        @endforelse
+        </tbody>
+    </table>
+
+</div>
+
 </x-layoutAdmin>

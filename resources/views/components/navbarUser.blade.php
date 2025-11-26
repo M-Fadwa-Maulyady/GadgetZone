@@ -22,7 +22,13 @@
                 <button class="btn">Search</button>
             </div>
 
-            <button class="icon-btn">🛒 <span class="cart-badge">3</span></button>
+        <a href="{{ route('user.checkout') }}" class="icon-btn">
+            🛒 
+            <span class="cart-badge">
+                {{ session('cart') ? count(session('cart')) : 0 }}
+            </span>
+        </a>
+
 
             <a href="#" class="btn btn-logout" id="logoutBtn">Logout</a>
 
