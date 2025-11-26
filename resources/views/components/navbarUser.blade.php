@@ -14,7 +14,7 @@
             </svg>" alt="logo">
         </div>
 
-        {{-- Search + Cart + Logout → kanan --}}
+        {{-- Search + Cart + Logout --}}
         <div class="header-actions" style="margin-left:auto; display:flex; align-items:center; gap:10px;">
             
             <div class="search-wrap">
@@ -33,24 +33,26 @@
 
     </div>
 
-    {{-- ================= NAV MENU (TENGAH) ================= --}}
-    <nav class="main-nav" 
+    {{-- ================= NAV MENU ================= --}}
+    <nav class="main-nav"
          style="display:flex; justify-content:center; gap:30px; padding:15px 0;">
 
         <a href="{{ route('user.landingLogin') }}"
-            class="{{ request()->routeIs('user.landingLogin') ? 'active' : '' }}">
+           class="{{ request()->routeIs('user.landingLogin') ? 'active' : '' }}">
             Home
         </a>
 
-        <a href="#">Collections</a>
-
-        {{-- <a href="{{ route('productUser') }}"
-            class="{{ request()->routeIs('productUser') ? 'active' : '' }}">
-            Products
-        </a> --}}
+        <a href="{{ route('productUser') }}"
+           class="{{ request()->routeIs('productUser') ? 'active' : '' }}">
+            Collections
+        </a>
 
         <a href="#">Blog</a>
-        <a href="#">Contact</a>
+
+        <a href="{{ route('contactUser') }}"
+           class="{{ request()->routeIs('contactUser') ? 'active' : '' }}">
+            Contact
+        </a>
 
     </nav>
 
