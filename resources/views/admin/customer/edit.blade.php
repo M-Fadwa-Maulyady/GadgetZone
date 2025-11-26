@@ -17,7 +17,7 @@
 
                 <div class="col-sm-6">
                     <div class="float-end d-none d-sm-block">
-                        <a href="{{ route('dataCustomer') }}" class="btn btn-secondary">
+                        <a href="{{ route('dataCustomer.index') }}" class="btn btn-secondary">
                             <i class="mdi mdi-arrow-left me-2"></i> Kembali
                         </a>
                     </div>
@@ -27,6 +27,7 @@
         </div>
     </div>
     <!-- end page title -->
+
 
     <div class="page-content">
         <div class="container-fluid">
@@ -50,32 +51,32 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('updateCustomer', $customer->id) }}" method="POST">
+                    <form action="{{ route('dataCustomer.update', $customer->id) }}" method="POST">
                         @csrf
                         @method('PUT')
 
                         <div class="form-group mb-3">
                             <label>Nama</label>
                             <input type="text" name="name" class="form-control"
-                                value="{{ old('name', $customer->name) }}">
+                                   value="{{ old('name', $customer->name) }}">
                         </div>
 
                         <div class="form-group mb-3">
                             <label>Email</label>
                             <input type="text" name="email" class="form-control"
-                                value="{{ old('email', $customer->email) }}">
+                                   value="{{ old('email', $customer->email) }}">
                         </div>
 
                         <div class="form-group mb-3">
                             <label>Alamat</label>
                             <input type="text" name="alamat" class="form-control"
-                                value="{{ old('alamat', $customer->alamat) }}">
+                                   value="{{ old('alamat', $customer->alamat) }}">
                         </div>
 
                         <div class="form-group mb-3">
                             <label>No. Telp</label>
                             <input type="text" name="no_telp" class="form-control"
-                                value="{{ old('no_telp', $customer->no_telp) }}">
+                                   value="{{ old('no_telp', $customer->no_telp) }}">
                         </div>
 
                         <div class="form-group mb-3">
@@ -89,7 +90,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-success">Update</button>
-                        <a href="{{ route('dataCustomer') }}" class="btn btn-secondary">Kembali</a>
+                        <a href="{{ route('dataCustomer.index') }}" class="btn btn-secondary">Kembali</a>
 
                     </form>
 
