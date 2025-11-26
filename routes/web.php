@@ -86,6 +86,10 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         return view('user.contact');
     })->name('contactUser');
 
+    Route::post('/contact/send', [CustomerController::class, 'sendContact'])
+    ->name('contact.send');
+
+
 
     // ---------- CHECKOUT ----------
     Route::get('/checkout', [CheckoutController::class, 'index'])
