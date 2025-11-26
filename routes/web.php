@@ -7,16 +7,27 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\dashboardController;
 use Illuminate\Support\Facades\Route;
 
 
-// ================= PUBLIC =================
+
+/*
+|--------------------------------------------------------------------------
+| PUBLIC ROUTES
+|--------------------------------------------------------------------------
+*/
 Route::get('/', function () {
     return view('user.landing');
 })->name('home');
 
 
-// ================= AUTH =================
+
+/*
+|--------------------------------------------------------------------------
+| AUTH ROUTES
+|--------------------------------------------------------------------------
+*/
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 
@@ -27,28 +38,38 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 
-// ================= ADMIN =================
+/*
+|--------------------------------------------------------------------------
+| ADMIN ROUTES (auth + role:admin)
+|--------------------------------------------------------------------------
+*/
 Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('auth', 'role:admin')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    // admin.dashboard
+    Route::get('/admin.dashboard', [dashboardController::class, 'index'])
+        ->name('dashboard');
 
-    // ---------- ORDERS ----------
+
+    /*
+    |----------------------------------------------------------------------
+    | ADMIN - ORDERS
+    |----------------------------------------------------------------------
+    */
     Route::prefix('admin')->group(function () {
-
-        Route::get('/orders', [AdminOrderController::class, 'index'])
-            ->name('admin.orders');
-
-        Route::get('/orders/{id}', [AdminOrderController::class, 'show'])
-            ->name('admin.orders.show');
-
-        Route::put('/orders/{id}/status', [AdminOrderController::class, 'updateStatus'])
-            ->name('admin.orders.status');
+        Route::get('/orders', [AdminOrderController::class, 'index'])->name('admin.orders');
+        Route::get('/orders/{id}', [AdminOrderController::class, 'show'])->name('admin.orders.show');
+        Route::put('/orders/{id}/status', [AdminOrderController::class, 'updateStatus'])->name('admin.orders.status');
     });
 
 
-    // ---------- PRODUK ----------
+    /*
+    |----------------------------------------------------------------------
+    | ADMIN - PRODUK CRUD
+    |----------------------------------------------------------------------
+    */
     Route::prefix('admin/produk')->name('dataProduk.')->group(function () {
         Route::get('/', [ProdukController::class, 'index'])->name('index');
         Route::get('/create', [ProdukController::class, 'create'])->name('create');
@@ -59,7 +80,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
 
-    // ---------- CUSTOMER CRUD ----------
+    /*
+    |----------------------------------------------------------------------
+    | ADMIN - CUSTOMER CRUD
+    |----------------------------------------------------------------------
+    */
     Route::prefix('admin/customers')->name('dataCustomer.')->group(function () {
         Route::get('/', [CustomerController::class, 'index'])->name('index');
         Route::get('/create', [CustomerController::class, 'create'])->name('create');
@@ -70,55 +95,54 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
 
-    Route::prefix('admin/blog')->middleware(['auth','role:admin'])->name('admin.blog.')->group(function () {
-    Route::get('/', [AdminBlogController::class, 'index'])->name('index');
-    Route::get('/create', [AdminBlogController::class, 'create'])->name('create');
-    Route::post('/store', [AdminBlogController::class, 'store'])->name('store');
-    Route::get('/edit/{id}', [AdminBlogController::class, 'edit'])->name('edit');
-    Route::put('/update/{id}', [AdminBlogController::class, 'update'])->name('update');
-    Route::delete('/delete/{id}', [AdminBlogController::class, 'destroy'])->name('delete');
+    /*
+    |----------------------------------------------------------------------
+    | ADMIN - BLOG CRUD
+    |----------------------------------------------------------------------
+    */
+    Route::prefix('admin/blog')->name('admin.blog.')->group(function () {
+        Route::get('/', [AdminBlogController::class, 'index'])->name('index');
+        Route::get('/create', [AdminBlogController::class, 'create'])->name('create');
+        Route::post('/store', [AdminBlogController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [AdminBlogController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [AdminBlogController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [AdminBlogController::class, 'destroy'])->name('delete');
+    });
+
 });
 
 
-});
 
-
-
-// ================= USER =================
+/*
+|--------------------------------------------------------------------------
+| USER ROUTES (auth + role:user)
+|--------------------------------------------------------------------------
+*/
 Route::middleware(['auth', 'role:user'])->group(function () {
 
+    // Landing setelah login
     Route::get('/landingLogin', function () {
         return view('user.landingLogin');
     })->name('user.landingLogin');
 
-    Route::get('/products', function () {
-        return view('user.product');
-    })->name('productUser');
+    // Pages user
+    Route::get('/products', fn() => view('user.product'))->name('productUser');
+    Route::get('/contact', fn() => view('user.contact'))->name('contactUser');
 
-    Route::get('/contact', function () {
-        return view('user.contact');
-    })->name('contactUser');
-    
+    // Contact form
+    Route::post('/contact/send', [CustomerController::class, 'sendContact'])->name('contact.send');
 
-    Route::post('/contact/send', [CustomerController::class, 'sendContact'])
-    ->name('contact.send');
-
+    // Blog user
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.detail');
+    Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.detail');
 
-
-
-
-    // ---------- CHECKOUT ----------
-    Route::get('/checkout', [CheckoutController::class, 'index'])
-        ->name('user.checkout');
-
-    Route::post('/checkout/process', [CheckoutController::class, 'process'])
-        ->name('user.checkout.process');
-
-    Route::post('/checkout', [CheckoutController::class, 'store'])
-        ->name('user.checkout.store');
-
-    Route::get('/checkout/sukses', [CheckoutController::class, 'success'])
-        ->name('user.checkout.success');
+    /*
+    |----------------------------------------------------------------------
+    | USER - CHECKOUT
+    |----------------------------------------------------------------------
+    */
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('user.checkout');
+    Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('user.checkout.process');
+    Route::post('/checkout', [CheckoutController::class, 'store'])->name('user.checkout.store');
+    Route::get('/checkout/sukses', [CheckoutController::class, 'success'])->name('user.checkout.success');
 });

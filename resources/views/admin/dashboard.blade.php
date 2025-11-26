@@ -1,410 +1,91 @@
 <x-layoutAdmin>
-    <div class="page-content">
+<div class="page-content" style="margin-top: 40px;"> <!-- DITAMBAH -->
 
-                <!-- start page title -->
-                <div class="page-title-box">
-                    <div class="container-fluid">
-                     <div class="row align-items-center">
-                         <div class="col-sm-6">
-                             <div class="page-title">
-                                 <h4>Dashboard</h4>
-                                     <ol class="breadcrumb m-0">
-                                         <li class="breadcrumb-item"><a href="javascript: void(0);">GateZone</a></li>
-                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                         <li class="breadcrumb-item active">Dashboard</li>
-                                     </ol>
-                             </div>
-                         </div>
-                         <div class="col-sm-6">
-                            <div class="float-end d-none d-sm-block">
-                                <a href="" class="btn btn-success">Add Widget</a>
-                            </div>
-                         </div>
-                     </div>
+    <div class="page-title-box">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="page-title">
+                        <h4>Dashboard</h4>
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">GateZone</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
                     </div>
-                 </div>
-                 <!-- end page title -->    
-
-
-                <div class="container-fluid">
-
-                    <div class="page-content-wrapper">
-
-
-                        <div class="row">
-                            <div class="col-xl-8">
-                                <div class="card">
-                                    <div class="card-body">
-
-                                       
-
-                                        <h4 class="header-title mb-4 float-sm-start">Quick Summary</h4>
-
-                                        <div class="float-sm-end">
-                                            <ul class="nav nav-pills">
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="#">Day</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="#">Week</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="#">Month</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" href="#">Year</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="clearfix"></div>
-                                       
-
-                                        <div class="row align-items-center">
-                                            <div class="col-xl-9">
-
-                                                <div>
-                                                    <div id="stacked-column-chart" class="apex-charts" dir="ltr"></div>
-                                                </div>
-
-                                            </div>
-
-
-                                            <div class="col-xl-3">
-                                                <div class="dash-info-widget mt-4 mt-lg-0 py-4 px-3 rounded">
-
-                                                  
-
-                                                    <div class="media dash-main-border pb-2 mt-2">
-                                                        <div class="avatar-sm mb-3 mt-2">
-                                                            <span class="avatar-title rounded-circle bg-white shadow">
-                                                                    <i class="mdi mdi-currency-inr text-primary font-size-18"></i>
-                                                                </span>
-                                                        </div>
-                                                       <div class="media-body ps-3">
-
-                                                        <h4 class="font-size-20">$2354</h4>
-                                                        <p class="text-muted">Earning <a href="#" class="text-primary">Withdraw <i class="mdi mdi-arrow-right"></i></a>
-                                                        </p>
-
-                                                       </div>
-                                                      
-                                                    </div>
-
-                                                  
-
-                                                  
-
-                                                    <div class="media mt-4 dash-main-border pb-2">
-                                                        <div class="avatar-sm mb-3 mt-2">
-                                                            <span class="avatar-title rounded-circle bg-white shadow">
-                                                                    <i class="mdi mdi-credit-card-outline text-primary font-size-18"></i>
-                                                                </span>
-                                                        </div>
-                                                        <div class="media-body ps-3">
-                                                            <h4 class="font-size-20">$1598</h4>
-                                                        <p class="text-muted">To Paid <a href="#" class="text-primary">Pay <i class="mdi mdi-arrow-right"></i></a></p>
-                                                        </div>
-                                                    </div>
-
-                                                 
-
-                                                    <div class="media mt-4">
-                                                        <div class="avatar-sm mb-2 mt-2">
-                                                            <span class="avatar-title rounded-circle bg-white shadow">
-                                                                    <i class="mdi mdi-eye-outline text-primary font-size-18"></i>
-                                                                </span>
-                                                        </div>
-                                                       <div class="media-body ps-3">
-                                                        <h4 class="font-size-20">1230</h4>
-                                                        <p class="text-muted mb-0">To Online <a href="#" class="text-primary">View <i class="mdi mdi-arrow-right"></i></a></p>
-                                                       </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-xl-4">
-                                <div class="row">
-                                    <div class="col-xl-6 col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="text-center">
-                                                    <p class="font-size-16">Orders</p>
-                                                    <div class="mini-stat-icon mx-auto mb-4 mt-3">
-                                                        <span class="avatar-title rounded-circle bg-soft-primary">
-                                                                <i class="mdi mdi-cart-outline text-primary font-size-20"></i>
-                                                            </span>
-                                                    </div>
-                                                    <h5 class="font-size-22">58</h5>
-    
-                                                    <p class="text-muted">70% Target</p>
-
-                                                    <div class="progress mt-3" style="height: 4px;">
-                                                        <div class="progress-bar progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="70">
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        
-                                    </div>
-
-                                    <div class="col-xl-6 col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="text-center">
-                                                    <p class="font-size-16">Users</p>
-                                                    <div class="mini-stat-icon mx-auto mb-4 mt-3">
-                                                        <span class="avatar-title rounded-circle bg-soft-success">
-                                                                <i class="mdi mdi-account-outline text-success font-size-20"></i>
-                                                            </span>
-                                                    </div>
-                                                    <h5 class="font-size-22">136</h5>
-    
-                                                    <p class="text-muted">80% Target</p>
-
-                                                    <div class="progress mt-3" style="height: 4px;">
-                                                        <div class="progress-bar progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80">
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title mb-4">Revenue Stastics</h4>
-
-                                        <div class="media">
-
-                                            <h4>$14,235 </h4>
-
-
-                                            <div class="media-body ps-3">
-
-                                                <div class="dropdown">
-                                                    <button class="btn btn-light btn-sm dropdown-toggle" type="button"
-                                                        id="dropdownMenuButton" data-bs-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        Today<i class="mdi mdi-chevron-down ms-1"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#">Yesterday</a>
-                                                        <a class="dropdown-item" href="#">Last Week</a>
-                                                        <a class="dropdown-item" href="#">last Month</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="mt-3">
-                                            <div id="stastics-chart"></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xl-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title mb-4">Best Selling Product</h4>
-                                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                                            <div class="carousel-indicators">
-                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                              </div>
-                                            <div class="carousel-inner">
-
-                                                <div class="carousel-item active">
-                                                    <div class="row align-items-center mb-5">
-                                                        <div class="col-md-4">
-                                                            <img src="assets/images/product/img-3.png"
-                                                                class="img-fluid me-3" alt="">
-                                                        </div>
-                                                        <div class="col-md-7 offset-md-1">
-
-                                                          <div class="mt-4 mt-sm-0">
-                                                            <p class="text-muted mb-2">Headphone</p>
-
-                                                            <h5 class="text-primary">Blue Headphone</h5>
-
-
-
-                                                            <div class="row no-gutters mt-4">
-
-                                                                <div class="col-4">
-
-                                                                    <div class="mt-1">
-                                                                        <h4>1200</h4>
-                                                                        <p class="text-muted mb-1">Sold</p>
-                                                                    </div>
-
-                                                                </div>
-                                                                <div class="col-4">
-
-                                                                    <div class="mt-1">
-                                                                        <h4>450</h4>
-                                                                        <p class="text-muted mb-1">Stock</p>
-                                                                    </div>
-
-
-                                                                </div>
-
-                                                                <div class="col-4">
-                                                                    <div class="mt-4 pt-1">
-                                                                        <a href="" class="btn btn-primary btn-sm">Buy
-                                                                            Now</a>
-                                                                    </div>
-                                                                </div>
-
-
-                                                            </div>
-                                                          </div>
-
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="carousel-item">
-                                                    <div class="row align-items-center mb-5">
-                                                        <div class="col-md-4">
-                                                            <img src="assets/images/product/img-5.png"
-                                                                class="img-fluid me-3" alt="">
-                                                        </div>
-                                                        <div class="col-md-7 offset-md-1">
-
-                                                           <div class="mt-4 mt-sm-0">
-                                                            <p class="text-muted mb-2">T-shirt</p>
-
-                                                            <h5 class="text-primary">Blue T-shirt</h5>
-
-
-
-                                                            <div class="row no-gutters mt-4">
-
-                                                                <div class="col-4">
-
-                                                                    <div class="mt-1">
-                                                                        <h4>800</h4>
-                                                                        <p class="text-muted mb-1">Sold</p>
-                                                                    </div>
-
-                                                                </div>
-                                                                <div class="col-4">
-
-                                                                    <div class="mt-1">
-                                                                        <h4>250</h4>
-                                                                        <p class="text-muted mb-1">Stock</p>
-                                                                    </div>
-
-
-                                                                </div>
-
-                                                                <div class="col-4">
-                                                                    <div class="mt-4 pt-1">
-                                                                        <a href="" class="btn btn-primary btn-sm">Buy
-                                                                            Now</a>
-                                                                    </div>
-                                                                </div>
-
-
-                                                            </div>
-                                                           </div>
-
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-
-                                                <div class="carousel-item">
-                                                    <div class="row align-items-center mb-5">
-                                                        <div class="col-md-4">
-                                                            <img src="assets/images/product/img-1.png"
-                                                                class="img-fluid me-3" alt="">
-                                                        </div>
-                                                        <div class="col-md-7 offset-md-1">
-
-                                                           <div class="mt-4 mt-sm-0">
-                                                            <p class="text-muted mb-2">Sonic</p>
-
-                                                            <h5 class="text-primary">Alarm clock</h5>
-
-
-
-                                                            <div class="row no-gutters mt-4">
-
-                                                                <div class="col-4">
-
-                                                                    <div class="mt-1">
-                                                                        <h4>600</h4>
-                                                                        <p class="text-muted mb-1">Sold</p>
-                                                                    </div>
-
-                                                                </div>
-                                                                <div class="col-4">
-
-                                                                    <div class="mt-1">
-                                                                        <h4>150</h4>
-                                                                        <p class="text-muted mb-1">Stock</p>
-                                                                    </div>
-
-
-                                                                </div>
-
-                                                                <div class="col-4">
-                                                                    <div class="mt-4 pt-1">
-                                                                        <a href="" class="btn btn-primary btn-sm">Buy
-                                                                            Now</a>
-                                                                    </div>
-                                                                </div>
-
-
-                                                            </div>
-                                                           </div>
-
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                </div> <!-- container-fluid -->
+                </div>
             </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="page-content-wrapper">
+
+            {{-- Summary --}}
+            <div class="row">
+
+                <div class="col-xl-4 col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <p class="font-size-16">Total Pendapatan</p>
+                            <h3>Rp {{ number_format($totalPendapatan) }}</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <p class="font-size-16">Total Order</p>
+                            <h3>{{ $totalOrder }}</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <p class="font-size-16">Produk Terjual</p>
+                            <h3>{{ $totalProdukTerjual }}</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            {{-- Produk Info --}}
+            <div class="row mt-4">
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title mb-4">Produk Utama</h4>
+
+                            <ul class="list-group">
+
+                                <li class="list-group-item">
+                                    <strong>Produk Termahal:</strong><br>
+                                    {{ $produkTermahal->nama ?? '-' }} <br>
+                                    Harga: Rp {{ number_format($produkTermahal->harga ?? 0) }}
+                                </li>
+
+                                <li class="list-group-item">
+                                    <strong>Stok Terbanyak:</strong><br>
+                                    {{ $stokTerbanyak->nama ?? '-' }} <br>
+                                    Stok: {{ $stokTerbanyak->stok ?? 0 }}
+                                </li>
+
+                                <li class="list-group-item">
+                                    <strong>Stok Terendah:</strong><br>
+                                    {{ $stokTerendah->nama ?? '-' }} <br>
+                                    Stok: {{ $stokTerendah->stok ?? 0 }}
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 </x-layoutAdmin>
