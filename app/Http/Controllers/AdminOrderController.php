@@ -8,29 +8,18 @@ use Illuminate\Http\Request;
 
 class AdminOrderController extends Controller
 {
-    /**
-     * Tampilkan daftar order (order.index)
-     */
     public function index()
     {
         $orders = Order::orderBy('created_at', 'desc')->get();
-
         return view('admin.order.index', compact('orders'));
     }
 
-    /**
-     * Tampilkan detail order (order.show)
-     */
     public function show($id)
     {
         $order = Order::findOrFail($id);
-
         return view('admin.order.show', compact('order'));
     }
 
-    /**
-     * Update payment_status (Pending → Paid → Unpaid → Canceled)
-     */
     public function updateStatus(Request $request, $id)
     {
         $request->validate([
@@ -38,9 +27,11 @@ class AdminOrderController extends Controller
         ]);
 
         $order = Order::findOrFail($id);
-        $order->payment_status = $request->payment_status;
+
+        // FIX: gunakan kolom yang benar dari database → "status"
+        $order->status = $request->payment_status;
         $order->save();
 
-        return back()->with('success', 'Payment status updated successfully.');
+        return back()->with('success', 'Status pembayaran berhasil diperbarui!');
     }
 }

@@ -1,82 +1,85 @@
 <x-layoutUser>
-    <section class="checkout-page" style="padding: 40px 0;">
-        <div class="container">
-            <h1 style="margin-bottom: 24px;">Checkout</h1>
 
-            @if ($errors->any())
-                <div class="alert alert-danger" style="margin-bottom: 16px;">
-                    <ul style="margin: 0; padding-left: 18px;">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+<section style="padding:40px;">
+    <h2 style="margin-bottom:20px;">Checkout</h2>
+
+    @if ($cart && count($cart) > 0)
+
+        <!-- FORM INFORMASI PEMBELI -->
+        <form action="{{ route('user.checkout.process') }}" method="POST" style="display:flex; gap:30px; flex-wrap:wrap;">
+            @csrf
+
+            <div style="flex:1; min-width:300px;">
+                <h4>Informasi Pembeli</h4>
+
+                <label>Nama Lengkap</label>
+                <input type="text" name="name" class="form-control" value="{{ auth()->user()->name }}" required>
+
+                <label style="margin-top:15px;">No HP / WhatsApp</label>
+                <input type="text" name="phone" class="form-control" required>
+
+                <label style="margin-top:15px;">Alamat Pengiriman</label>
+                <textarea name="shipping_address" class="form-control" required></textarea>
+
+                <label style="margin-top:15px;">Metode Pembayaran</label>
+                <select name="payment_method" class="form-control" required>
+                    <option value="COD">COD (Bayar di tempat)</option>
+                    <option value="Transfer">Transfer Bank</option>
+                    <option value="QRIS">QRIS</option>
+                </select>
+            </div>
+
+            <!-- RINGKASAN PRODUK -->
+            <div style="flex:1; min-width:300px;">
+                <h4>Ringkasan Pesanan</h4>
+
+                <table style="width:100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background:#f3f6ff;">
+                            <th style="padding:8px; border:1px solid #ddd;">Produk</th>
+                            <th style="padding:8px; border:1px solid #ddd;">Qty</th>
+                            <th style="padding:8px; border:1px solid #ddd;">Harga</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($cart as $item)
+                        <tr>
+                            <td style="padding:8px; border:1px solid #ddd;">{{ $item['name'] }}</td>
+                            <td style="padding:8px; border:1px solid #ddd;">{{ $item['qty'] }}</td>
+                            <td style="padding:8px; border:1px solid #ddd;">
+                                Rp {{ number_format($item['price'] * $item['qty'],0,',','.') }}
+                            </td>
+                        </tr>
                         @endforeach
-                    </ul>
-                </div>
-            @endif
+                    </tbody>
+                </table>
 
-            <form action="{{ route('user.checkout.store') }}" method="POST">
-                @csrf
+                <h3 style="margin-top:20px;">
+                    Total:
+                    <strong style="color:#007bff;">
+                        Rp {{ number_format($totalPrice,0,',','.') }}
+                    </strong>
+                </h3>
 
-                <div class="card" style="max-width: 600px; margin: 0 auto;">
-                    <div class="card-body">
+                <input type="hidden" name="total_price" value="{{ $totalPrice }}">
 
-                        <h4 class="mb-3">Data Pemesan</h4>
+                <button type="submit"
+                    style="margin-top:20px; background:#28a745; color:white; padding:12px;
+                    border:none; width:100%; border-radius:6px; font-size:16px; cursor:pointer;">
+                    ✔ Konfirmasi Pesanan
+                </button>
+            </div>
+        </form>
 
-                        <div class="mb-3">
-                            <label for="billing_name" class="form-label">Nama Lengkap</label>
-                            <input
-                                type="text"
-                                id="billing_name"
-                                name="billing_name"
-                                class="form-control"
-                                value="{{ old('billing_name') }}"
-                                required
-                            >
-                        </div>
+    @else
 
-                        <div class="mb-3">
-                            <label for="billing_email" class="form-label">Email</label>
-                            <input
-                                type="email"
-                                id="billing_email"
-                                name="billing_email"
-                                class="form-control"
-                                value="{{ old('billing_email') }}"
-                            >
-                        </div>
+        <p style="text-align:center; margin-top:20px;">
+            🛒 Keranjang masih kosong.
+            <br><br>
+            <a href="/products" style="color:#007bff; text-decoration:underline;">Belanja sekarang</a>
+        </p>
 
-                        <div class="mb-3">
-                            <label for="billing_phone" class="form-label">No. HP / WhatsApp</label>
-                            <input
-                                type="text"
-                                id="billing_phone"
-                                name="billing_phone"
-                                class="form-control"
-                                value="{{ old('billing_phone') }}"
-                            >
-                        </div>
+    @endif
+</section>
 
-                        <div class="mb-3">
-                            <label for="total_price" class="form-label">Total Harga (Rp)</label>
-                            <input
-                                type="number"
-                                id="total_price"
-                                name="total_price"
-                                class="form-control"
-                                min="0"
-                                value="{{ old('total_price', $total) }}"
-                                required
-                            >
-                            <small class="text-muted">
-                                Nanti bisa diisi otomatis dari keranjang / produk.
-                            </small>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary w-100 mt-3">
-                            Buat Pesanan
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </section>
 </x-layoutUser>

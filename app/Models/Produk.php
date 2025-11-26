@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produk extends Model
 {
+    protected $table = 'produks'; // optional, perubahan kalau nama tabelnya bukan "produks"
+
     protected $fillable = [
         'nama',
         'harga',
@@ -13,4 +15,10 @@ class Produk extends Model
         'gambar',
         'deskripsi'
     ];
+
+    /** Relasi ke OrderItem (1 product bisa ada di banyak order item) */
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class, 'product_id');
+    }
 }

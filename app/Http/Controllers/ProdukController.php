@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class ProdukController extends Controller
 {
+    /** =============== ADMIN AREA =============== */
+    
     public function index()
     {
         $produk = Produk::orderBy('id', 'desc')->get();
@@ -46,7 +48,7 @@ class ProdukController extends Controller
     public function edit($id)
     {
         $produk = Produk::findOrFail($id);
-        return view('admin.produk.edit', compact('produk')); // ← FIX DI SINI
+        return view('admin.produk.edit', compact('produk'));
     }
 
     public function update(Request $request, $id)
@@ -62,6 +64,7 @@ class ProdukController extends Controller
         ]);
 
         if ($request->hasFile('gambar')) {
+
             $filename = time() . '_' . $request->file('gambar')->getClientOriginalName();
             $request->file('gambar')->move(public_path('tema/img/produk'), $filename);
 
@@ -96,4 +99,24 @@ class ProdukController extends Controller
         return redirect()->route('dataProduk.index')
                          ->with('success', 'Produk berhasil dihapus!');
     }
+
+
+    /** =============== USER AREA =============== */
+
+/** Menampilkan daftar produk untuk user */
+/** Menampilkan daftar produk untuk user */
+public function listUser()
+{
+    $produk = Produk::orderBy('id', 'desc')->get();
+    return view('user.product', ['products' => $produk]);
+}
+
+
+/** Menampilkan halaman detail produk */
+public function detail($id)
+{
+    $produk = Produk::findOrFail($id);
+    return view('user.produk_detail', compact('produk')); // FIXED
+}
+
 }

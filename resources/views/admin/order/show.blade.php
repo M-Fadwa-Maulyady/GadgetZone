@@ -24,6 +24,7 @@
             <div class="page-content-wrapper">
 
                 <div class="row">
+                    
                     <!-- Order Info -->
                     <div class="col-xl-6">
                         <div class="card">
@@ -31,28 +32,13 @@
 
                                 <h4 class="header-title mb-3">Order Information</h4>
 
-                                <p><strong>Order ID:</strong><br>
-                                    #{{ $order->id }}
-                                </p>
-
-                                <p><strong>Billing Name:</strong><br>
-                                    {{ $order->user->name ?? 'Unknown User' }}
-                                </p>
-
-                                <p><strong>Email:</strong><br>
-                                    {{ $order->user->email ?? '-' }}
-                                </p>
-
-                                <p><strong>Phone:</strong><br>
-                                    {{ $order->user->phone ?? '-' }}
-                                </p>
-
-                                <p><strong>Shipping Address:</strong><br>
-                                    {{ $order->shipping_address }}
-                                </p>
-
+                                <p><strong>Order ID:</strong><br>#{{ $order->id }}</p>
+                                <p><strong>Billing Name:</strong><br>{{ $order->user->name ?? 'Unknown User' }}</p>
+                                <p><strong>Email:</strong><br>{{ $order->user->email ?? '-' }}</p>
+                                <p><strong>Phone:</strong><br>{{ $order->user->phone ?? '-' }}</p>
+                                <p><strong>Shipping Address:</strong><br>{{ $order->shipping_address }}</p>
                                 <p><strong>Total Price:</strong><br>
-                                    ${{ number_format($order->total_price, 2) }}
+                                    Rp {{ number_format($order->total_price, 0, ',', '.') }}
                                 </p>
 
                                 <hr>
@@ -81,6 +67,7 @@
                         </div>
                     </div>
 
+                    
                     <!-- Order Items -->
                     <div class="col-xl-6">
                         <div class="card">
@@ -99,14 +86,18 @@
                                     </thead>
 
                                     <tbody>
-                                        @foreach($order->items as $item)
+                                        @forelse ($order->items as $item)
                                             <tr>
-                                                <td>{{ $item->product->name }}</td>
+                                                <td>{{ $item->product->nama ?? 'Produk Tidak Ada' }}</td>
                                                 <td>{{ $item->qty }}</td>
-                                                <td>${{ $item->price }}</td>
-                                                <td>${{ $item->qty * $item->price }}</td>
+                                                <td>Rp {{ number_format($item->price, 0, ',', '.') }}</td>
+                                                <td>Rp {{ number_format($item->qty * $item->price, 0, ',', '.') }}</td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="4" class="text-center text-muted">Tidak ada item</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
 
@@ -115,7 +106,6 @@
                     </div>
 
                 </div>
-                <!-- end row -->
 
             </div>
         </div>

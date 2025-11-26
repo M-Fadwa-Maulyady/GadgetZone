@@ -11,7 +11,6 @@ use App\Http\Controllers\dashboardController;
 use Illuminate\Support\Facades\Route;
 
 
-
 /*
 |--------------------------------------------------------------------------
 | PUBLIC ROUTES
@@ -22,7 +21,6 @@ Route::get('/', function () {
 })->name('home');
 
 
-
 /*
 |--------------------------------------------------------------------------
 | AUTH ROUTES
@@ -30,47 +28,29 @@ Route::get('/', function () {
 */
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
-
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
 
 
 /*
 |--------------------------------------------------------------------------
-| ADMIN ROUTES (auth + role:admin)
+| ADMIN ROUTES
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth', 'role:admin'])->group(function () {
-Route::prefix('admin')->name('admin.')->middleware('auth', 'role:admin')->group(function () {
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
+
+    // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-});
 
-    // admin.dashboard
-    Route::get('/admin.dashboard', [dashboardController::class, 'index'])
-        ->name('dashboard');
+    // Orders
+    Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders');
+    Route::get('/orders/{id}', [AdminOrderController::class, 'show'])->name('orders.show');
+    Route::put('/orders/{id}/update-status', [AdminOrderController::class, 'updateStatus'])
+        ->name('orders.updateStatus');
 
-
-    /*
-    |----------------------------------------------------------------------
-    | ADMIN - ORDERS
-    |----------------------------------------------------------------------
-    */
-    Route::prefix('admin')->group(function () {
-        Route::get('/orders', [AdminOrderController::class, 'index'])->name('admin.orders');
-        Route::get('/orders/{id}', [AdminOrderController::class, 'show'])->name('admin.orders.show');
-        Route::put('/orders/{id}/status', [AdminOrderController::class, 'updateStatus'])->name('admin.orders.status');
-    });
-
-
-    /*
-    |----------------------------------------------------------------------
-    | ADMIN - PRODUK CRUD
-    |----------------------------------------------------------------------
-    */
-    Route::prefix('admin/produk')->name('dataProduk.')->group(function () {
+    // Produk CRUD
+    Route::prefix('produk')->name('produk.')->group(function () {
         Route::get('/', [ProdukController::class, 'index'])->name('index');
         Route::get('/create', [ProdukController::class, 'create'])->name('create');
         Route::post('/store', [ProdukController::class, 'store'])->name('store');
@@ -79,13 +59,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'role:admin')->group(
         Route::delete('/delete/{id}', [ProdukController::class, 'destroy'])->name('delete');
     });
 
-
-    /*
-    |----------------------------------------------------------------------
-    | ADMIN - CUSTOMER CRUD
-    |----------------------------------------------------------------------
-    */
-    Route::prefix('admin/customers')->name('dataCustomer.')->group(function () {
+    // Customer CRUD
+    Route::prefix('customers')->name('customers.')->group(function () {
         Route::get('/', [CustomerController::class, 'index'])->name('index');
         Route::get('/create', [CustomerController::class, 'create'])->name('create');
         Route::post('/store', [CustomerController::class, 'store'])->name('store');
@@ -94,13 +69,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'role:admin')->group(
         Route::delete('/delete/{id}', [CustomerController::class, 'destroy'])->name('delete');
     });
 
-
-    /*
-    |----------------------------------------------------------------------
-    | ADMIN - BLOG CRUD
-    |----------------------------------------------------------------------
-    */
-    Route::prefix('admin/blog')->name('admin.blog.')->group(function () {
+    // Blog CRUD
+    Route::prefix('blog')->name('blog.')->group(function () {
         Route::get('/', [AdminBlogController::class, 'index'])->name('index');
         Route::get('/create', [AdminBlogController::class, 'create'])->name('create');
         Route::post('/store', [AdminBlogController::class, 'store'])->name('store');
@@ -112,37 +82,35 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'role:admin')->group(
 });
 
 
-
 /*
 |--------------------------------------------------------------------------
-| USER ROUTES (auth + role:user)
+| USER ROUTES
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'role:user'])->group(function () {
 
-    // Landing setelah login
-    Route::get('/landingLogin', function () {
-        return view('user.landingLogin');
-    })->name('user.landingLogin');
+    Route::get('/landingLogin', fn() => view('user.landingLogin'))
+        ->name('user.landingLogin');
 
-    // Pages user
-    Route::get('/products', fn() => view('user.product'))->name('productUser');
+    // Produk user
+    Route::get('/products', [ProdukController::class, 'listUser'])->name('productUser');
+    Route::get('/produk/{id}', [ProdukController::class, 'detail'])->name('user.produk_detail');
+
+    // Contact
     Route::get('/contact', fn() => view('user.contact'))->name('contactUser');
-
-    // Contact form
     Route::post('/contact/send', [CustomerController::class, 'sendContact'])->name('contact.send');
 
     // Blog user
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
     Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.detail');
 
-    /*
-    |----------------------------------------------------------------------
-    | USER - CHECKOUT
-    |----------------------------------------------------------------------
-    */
+    // Checkout
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('user.checkout');
     Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('user.checkout.process');
-    Route::post('/checkout', [CheckoutController::class, 'store'])->name('user.checkout.store');
     Route::get('/checkout/sukses', [CheckoutController::class, 'success'])->name('user.checkout.success');
+
+    // Cart
+    Route::post('/cart/add/{id}', [CheckoutController::class, 'addToCart'])->name('cart.add');
 });
+
+// *END*

@@ -2,26 +2,57 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderItem;
-use App\Models\Product;
+use App\Models\Produk;
 use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {
+    /** ==================== CART ===================== */
+
+    // Tambahkan ke Keranjang
+    public function addToCart(Request $request, $id)
+    {
+        $product = Produk::findOrFail($id); // FIX DI SINI
+
+        $cart = session()->get('cart', []);
+
+        $qty = $request->qty ?? 1;
+
+        // Jika produk sudah ada di cart, tambah qty
+        if(isset($cart[$id])) {
+            $cart[$id]['qty'] += $qty;
+        } else {
+            $cart[$id] = [
+                'id' => $product->id,
+                'name' => $product->nama,
+                'price' => $product->harga,
+                'qty' => $qty,
+                'image' => $product->gambar
+            ];
+        }
+
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', '🛒 Produk berhasil ditambahkan ke keranjang!');
+    }
+
+
+    /** ==================== CHECKOUT PAGE ===================== */
+
     public function index()
     {
         $cart = session()->get('cart', []);
 
-        $totalPrice = 0;
-        foreach ($cart as $item) {
-            $totalPrice += $item['price'] * $item['qty'];
-        }
+        $totalPrice = collect($cart)->sum(fn($item) => $item['price'] * $item['qty']);
 
-        return view('user.checkout.index', compact('cart', 'totalPrice'));
+        return view('user.checkout', compact('cart', 'totalPrice'));
     }
+
+
+    /** ==================== PROCESS ORDER ===================== */
 
     public function process(Request $request)
     {
@@ -33,7 +64,7 @@ class CheckoutController extends Controller
         $cart = session()->get('cart');
 
         if (!$cart || count($cart) === 0) {
-            return back()->with('error', 'Keranjang masih kosong');
+            return back()->with('error', '⚠ Keranjang masih kosong.');
         }
 
         DB::transaction(function () use ($request, $cart) {
@@ -54,58 +85,19 @@ class CheckoutController extends Controller
                     'price'      => $item['price'],
                 ]);
 
-                Product::where('id', $item['id'])
-                    ->decrement('stock', $item['qty']);
+                Produk::where('id', $item['id'])->decrement('stok', $item['qty']); // FIX DI SINI
             }
         });
 
+        // Kosongkan cart setelah checkout
         session()->forget('cart');
 
-        return redirect()->route('user.orders')->with('success', 'Pesanan berhasil dibuat!');
+        return redirect()->route('user.checkout.success')->with('success', '🎉 Checkout berhasil!');
     }
 
-    public function success() {
-    return view('user.checkout.success');
-}
 
+    /** ==================== SUCCESS PAGE ===================== */
 
-class CheckoutController extends Controller
-{
-    // Halaman form checkout
-    public function index(Request $request)
-    {
-        // total bisa dikirim via query string ?total=100000
-        $total = $request->query('total', 0);
-
-        return view('user.checkout', [
-            'total' => $total,
-        ]);
-    }
-
-    // Simpan order ke database
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'billing_name'  => 'required|string|max:255',
-            'billing_email' => 'nullable|email',
-            'billing_phone' => 'nullable|string|max:20',
-            'total_price'   => 'required|integer|min:0',
-        ]);
-
-        $order = Order::create([
-            'billing_name'   => $validated['billing_name'],
-            'billing_email'  => $validated['billing_email'] ?? null,
-            'billing_phone'  => $validated['billing_phone'] ?? null,
-            'total_price'    => $validated['total_price'],
-            'payment_status' => 'pending', // sesuai field di migration
-        ]);
-
-        return redirect()
-            ->route('user.checkout.success')
-            ->with('success', 'Pesanan berhasil dibuat! ID Pesanan #' . $order->id);
-    }
-
-    // Halaman sukses checkout
     public function success()
     {
         return view('user.checkout_success');
