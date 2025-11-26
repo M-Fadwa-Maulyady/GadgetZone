@@ -17,7 +17,7 @@
 
                 <div class="col-sm-6">
                     <div class="float-end d-none d-sm-block">
-                        <a href="{{ route('dataCustomer') }}" class="btn btn-secondary">
+                        <a href="{{ route('dataCustomer.index') }}" class="btn btn-secondary">
                             <i class="mdi mdi-arrow-left me-2"></i> Kembali
                         </a>
                     </div>
@@ -29,7 +29,6 @@
     <!-- end page title -->
 
 
-    <!-- Wajib ada agar footer tidak naik -->
     <div class="page-content">
 
         <div class="container-fluid">
@@ -47,7 +46,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('storeCustomer') }}" method="POST">
+                    <form action="{{ route('dataCustomer.store') }}" method="POST">
                         @csrf
 
                         <div class="form-group mb-3">
@@ -81,7 +80,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-success">Simpan</button>
-                        <a href="{{ route('dataCustomer') }}" class="btn btn-secondary">Kembali</a>
+                        <a href="{{ route('dataCustomer.index') }}" class="btn btn-secondary">Kembali</a>
 
                     </form>
 
@@ -90,6 +89,6 @@
 
         </div>
 
-    </div> <!-- end page-content -->
+    </div>
 
 </x-layoutAdmin>
