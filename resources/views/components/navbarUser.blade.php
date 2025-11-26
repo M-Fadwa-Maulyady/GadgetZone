@@ -47,7 +47,10 @@
             Collections
         </a>
 
-        <a href="#">Blog</a>
+         <a href="{{ route('blog.index') }}"
+           class="{{ request()->routeIs('blog.index') ? 'active' : '' }}">
+            Blog
+        </a>
 
         <a href="{{ route('contactUser') }}"
            class="{{ request()->routeIs('contactUser') ? 'active' : '' }}">

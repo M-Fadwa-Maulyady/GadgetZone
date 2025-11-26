@@ -57,6 +57,14 @@
                 </li>
                 @endif
 
+                  <li>
+                     <a href="{{ route('admin.blog.index') }}"
+                        class="waves-effect {{ request()->routeIs('admin.blog.*') ? 'active' : '' }}">
+                        <i class="fa-solid fa-blog"></i>
+                        <span>Blog</span>
+                    </a>
+                </li>
+
                 {{-- Laporan --}}
                 <li>
                     <a href="#" class="waves-effect">

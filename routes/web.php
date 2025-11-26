@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
@@ -67,6 +69,17 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::delete('/delete/{id}', [CustomerController::class, 'destroy'])->name('delete');
     });
 
+
+    Route::prefix('admin/blog')->middleware(['auth','role:admin'])->name('admin.blog.')->group(function () {
+    Route::get('/', [AdminBlogController::class, 'index'])->name('index');
+    Route::get('/create', [AdminBlogController::class, 'create'])->name('create');
+    Route::post('/store', [AdminBlogController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [AdminBlogController::class, 'edit'])->name('edit');
+    Route::put('/update/{id}', [AdminBlogController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [AdminBlogController::class, 'destroy'])->name('delete');
+});
+
+
 });
 
 
@@ -85,9 +98,14 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/contact', function () {
         return view('user.contact');
     })->name('contactUser');
+    
 
     Route::post('/contact/send', [CustomerController::class, 'sendContact'])
     ->name('contact.send');
+
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.detail');
+
 
 
 
