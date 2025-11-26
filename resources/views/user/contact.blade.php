@@ -1,5 +1,53 @@
 <x-layoutUser>
+    <style>.newsletter-box {
+    background: linear-gradient(135deg, #0099ff, #0077ff);
+    padding: 25px 30px;
+    border-radius: 18px;
+    color: white;
+    box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.15);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.newsletter-box h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.newsletter-box p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-top: 0;
+    opacity: 0.95;
+}
+
+@media (max-width: 576px) {
+    .newsletter-box {
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .newsletter-box h3 {
+        font-size: 18px;
+    }
+
+    .newsletter-box p {
+        font-size: 14px;
+    }
+}
+</style>
     <link rel="stylesheet" href="{{ asset('tema/contact.css') }}">
+    @if(session('success'))
+<div class="alert alert-success fade-up"
+     style="background:#D4EDDA; padding:12px; border-radius:8px; margin-bottom:20px; color:#155724;">
+    {{ session('success') }}
+</div>
+@endif
+
     <section class="contact-hero fade-up">
     <h1>📬 Contact Us</h1>
     <p>Kami siap membantu Anda! Jangan ragu untuk menghubungi tim GadgetZone untuk pertanyaan atau dukungan.</p>
@@ -8,28 +56,30 @@
   <!-- Contact Section -->
   <section class="contact-container fade-up">
     <div class="contact-form">
-      <form>
-        <div class="form-row">
-          <input type="text" placeholder="Nama" required>
-          <input type="email" placeholder="Email" required>
-        </div>
-        <div class="form-row">
-          <input type="text" placeholder="Nomor Telepon">
-          <input type="text" placeholder="Subjek">
-        </div>
-        <textarea placeholder="Pesan Anda..." rows="5"></textarea>
-        <button type="submit" class="btn">Kirim Pesan</button>
-      </form>
+      <form action="{{ route('contact.send') }}" method="POST">
+    @csrf
+
+    <div class="form-row">
+        <input type="text" name="nama" placeholder="Nama" required>
+        <input type="email" name="email" placeholder="Email" required>
+    </div>
+
+    <div class="form-row">
+        <input type="text" name="telepon" placeholder="Nomor Telepon">
+        <input type="text" name="subjek" placeholder="Subjek" required>
+    </div>
+
+    <textarea name="pesan" placeholder="Pesan Anda..." rows="5" required></textarea>
+
+    <button type="submit" class="btn">Kirim Pesan</button>
+</form>
+
     </div>
 
     <div class="newsletter-box">
-      <h3>📰 Berlangganan Newsletter</h3>
-      <p>Dapatkan kabar promo & update produk terbaru dari GadgetZone langsung ke email kamu!</p>
-      <div class="newsletter-form">
-        <input type="email" placeholder="Masukkan Email Kamu">
-        <button class="btn">Berlangganan</button>
-      </div>
-    </div>
+      <h3>🔥 Jangan Lewatkan Promo & Rilis Produk Terbaru!</h3>
+      <p>Dengan bergabung ke newsletter GadgetZone, kamu akan menerima pemberitahuan tentang diskon besar, penawaran terbatas, hingga rilis gadget generasi terbaru sebelum orang lain mengetahuinya. Ayo gabung dan tetap update!</p>
+    </div>  
   </section>
 
   <!-- Info Section -->
