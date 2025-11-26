@@ -16,10 +16,12 @@ return new class extends Migration
             $table->decimal('price', 12, 2);
             $table->timestamps();
 
+            // Relasi ke tabel orders
             $table->foreign('order_id')
                 ->references('id')->on('orders')
                 ->onDelete('cascade');
 
+            // Relasi ke tabel produk (nama tabel: produks)
             $table->foreign('product_id')
                 ->references('id')->on('produks')
                 ->onDelete('cascade');

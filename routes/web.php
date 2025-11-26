@@ -24,7 +24,6 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.po
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
-
 // ================= ADMIN =================
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
@@ -32,21 +31,22 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 
-    // ---------- ORDERS ----------
-    Route::prefix('admin')->group(function () {
+    // ORDERS
+    // ORDERS
+Route::prefix('admin')->group(function () {
 
-        Route::get('/orders', [AdminOrderController::class, 'index'])
-            ->name('admin.orders');
+    Route::get('/orders', [AdminOrderController::class, 'index'])
+        ->name('admin.orders');
 
-        Route::get('/orders/{id}', [AdminOrderController::class, 'show'])
-            ->name('admin.orders.show');
+    Route::get('/orders/{id}', [AdminOrderController::class, 'show'])
+        ->name('admin.orders.show');
 
-        Route::put('/orders/{id}/status', [AdminOrderController::class, 'updateStatus'])
-            ->name('admin.orders.status');
-    });
+    Route::put('/orders/{id}/update-status', [AdminOrderController::class, 'updateStatus'])
+        ->name('admin.orders.updateStatus');
+});
 
 
-    // ---------- PRODUK ----------
+    // PRODUK CRUD (Admin)
     Route::prefix('admin/produk')->name('dataProduk.')->group(function () {
         Route::get('/', [ProdukController::class, 'index'])->name('index');
         Route::get('/create', [ProdukController::class, 'create'])->name('create');
@@ -56,8 +56,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::delete('/delete/{id}', [ProdukController::class, 'destroy'])->name('delete');
     });
 
-
-    // ---------- CUSTOMER CRUD ----------
+    // CUSTOMER CRUD
     Route::prefix('admin/customers')->name('dataCustomer.')->group(function () {
         Route::get('/', [CustomerController::class, 'index'])->name('index');
         Route::get('/create', [CustomerController::class, 'create'])->name('create');
@@ -78,29 +77,23 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         return view('user.landingLogin');
     })->name('user.landingLogin');
 
-    Route::get('/products', function () {
-        return view('user.product');
-    })->name('productUser');
+    // PRODUK UNTUK USER
+    Route::get('/products', [ProdukController::class, 'listUser'])->name('productUser');
+    Route::get('/produk/{id}', [ProdukController::class, 'detail'])->name('user.produk_detail');
 
+
+    // CONTACT
     Route::get('/contact', function () {
         return view('user.contact');
     })->name('contactUser');
 
     Route::post('/contact/send', [CustomerController::class, 'sendContact'])
-    ->name('contact.send');
+        ->name('contact.send');
 
+    // CHECKOUT
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('user.checkout');
+    Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('user.checkout.process');
+    Route::get('/checkout/sukses', [CheckoutController::class, 'success'])->name('user.checkout.success');
+    Route::post('/cart/add/{id}', [CheckoutController::class, 'addToCart'])->name('cart.add');
 
-
-    // ---------- CHECKOUT ----------
-    Route::get('/checkout', [CheckoutController::class, 'index'])
-        ->name('user.checkout');
-
-    Route::post('/checkout/process', [CheckoutController::class, 'process'])
-        ->name('user.checkout.process');
-
-    Route::post('/checkout', [CheckoutController::class, 'store'])
-        ->name('user.checkout.store');
-
-    Route::get('/checkout/sukses', [CheckoutController::class, 'success'])
-        ->name('user.checkout.success');
 });
