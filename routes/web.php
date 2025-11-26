@@ -103,3 +103,6 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
     // CART
     Route::post('/cart/add/{id}', [CheckoutController::class, 'addToCart'])->name('cart.add');
+});
+
+// *END*

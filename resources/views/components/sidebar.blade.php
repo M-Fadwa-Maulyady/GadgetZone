@@ -4,7 +4,7 @@
         <div class="user-sidebar text-center">
             <div class="dropdown">
                 <div class="user-img">
-                    <img src="assets/images/users/avatar-7.jpg" alt="" class="rounded-circle">
+                    <img src="{{ asset('tema/admin/assets/images/users/avatar-7.jpg') }}" alt="" class="rounded-circle">
                     <span class="avatar-online bg-success"></span>
                 </div>
                 <div class="user-info">
@@ -66,12 +66,14 @@
                 </li>
 
                 {{-- Laporan --}}
-                <li>
-                    <a href="#" class="waves-effect">
-                        <i class="fa-solid fa-book"></i>
-                        <span>Laporan</span>
-                    </a>
-                </li>
+                {{-- <li>
+    <a href="{{ route('admin.laporan.index') }}" 
+       class="waves-effect {{ request()->routeIs('admin.laporan.*') ? 'active' : '' }}">
+        <i class="fa-solid fa-book"></i>
+        <span>Laporan</span>
+    </a>
+</li> --}}
+
 
             </ul>
         </div>
