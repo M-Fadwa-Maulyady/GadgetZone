@@ -10,7 +10,7 @@
                         <h4>Edit Produk</h4>
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="#">GadgetZone</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('dataProduk.index') }}">Catalog</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.produk.index') }}">Catalog</a></li>
                             <li class="breadcrumb-item active">Edit Produk</li>
                         </ol>
                     </div>
@@ -18,7 +18,7 @@
 
                 <div class="col-sm-6">
                     <div class="float-end d-none d-sm-block">
-                        <a href="{{ route('dataProduk.index') }}" class="btn btn-secondary">
+                        <a href="{{ route('admin.produk.index') }}" class="btn btn-secondary">
                             <i class="mdi mdi-arrow-left"></i> Kembali
                         </a>
                     </div>
@@ -28,7 +28,6 @@
         </div>
     </div>
     <!-- === END BLUE HEADER === -->
-
 
 
     <!-- === CONTENT AREA === -->
@@ -46,16 +45,14 @@
                 <!-- CARD FORM -->
                 <div class="card-form-produk">
 
-                    <form action="{{ route('dataProduk.update', $produk->id) }}" 
-                          method="POST" enctype="multipart/form-data">
-
+                    <form action="{{ route('admin.produk.update', $produk->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
                         <!-- CURRENT IMAGE -->
                         <div class="form-group">
                             <label>Gambar Produk Saat Ini</label>
-                            <img src="{{ asset('tema/img/produk/' . $produk->gambar) }}" 
+                            <img src="{{ asset('tema/img/produk/' . $produk->gambar) }}"
                                  style="width: 120px; height:120px; object-fit:cover; border-radius:10px; margin-bottom:10px; border:1px solid #ddd;">
                         </div>
 
@@ -90,9 +87,23 @@
                             <textarea name="deskripsi" class="textarea">{{ $produk->deskripsi }}</textarea>
                         </div>
 
+                        <!-- KATEGORI -->
+                        <div class="form-group">
+                            <label>Kategori Produk <span>*</span></label>
+                            <select name="category_id" class="input" required>
+                                <option value="">-- Pilih Kategori --</option>
+                                @foreach($categories as $cat)
+                                    <option value="{{ $cat->id }}"
+                                        {{ $produk->category_id == $cat->id ? 'selected' : '' }}>
+                                        {{ $cat->nama }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <!-- BUTTONS -->
                         <div class="btn-row">
-                            <a href="{{ route('dataProduk.index') }}" class="btn-back">Kembali</a>
+                            <a href="{{ route('admin.produk.index') }}" class="btn-back">Kembali</a>
 
                             <button type="submit" class="btn-submit">
                                 <i class="fa-solid fa-save"></i> Update Produk
@@ -140,11 +151,11 @@
             margin-bottom: 18px;
         }
 
-        .form-group label span {
-            color: red;
-        }
+        .form-group label span { color: red; }
 
-        .input, .textarea {
+        .input,
+        .textarea,
+        select.input {
             padding: 12px 14px;
             border-radius: 10px;
             border: 1px solid #d1d5db;
@@ -187,9 +198,7 @@
             font-weight: 600;
         }
 
-        .btn-submit:hover {
-            background: #1e40af;
-        }
+        .btn-submit:hover { background: #1e40af; }
 
         .btn-back {
             padding: 12px 18px;
@@ -198,9 +207,7 @@
             color: #fff;
         }
 
-        .btn-back:hover {
-            background: #4b5563;
-        }
+        .btn-back:hover { background: #4b5563; }
     </style>
 
 </x-layoutAdmin>

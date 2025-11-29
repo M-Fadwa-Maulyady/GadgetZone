@@ -1,7 +1,7 @@
 <x-layoutUser>
 
-    {{-- === HERO SECTION === --}}
-    <section class="hero fade-up">
+    {{-- === HERO SECTION (BIRU GRADIENT) === --}}
+    <section class="blog-hero fade-up">
         <h1>📰 Blog & Artikel Terbaru</h1>
         <p>Dapatkan insight dan tips terbaru seputar dunia teknologi dan gadget terkini!</p>
     </section>
@@ -21,7 +21,7 @@
 
                 <p>{{ Str::limit($blog->excerpt, 100) }}...</p>
 
-                <a href="{{ route('blog.detail', $blog->slug) }}" class="btn">
+                <a href="{{ route('blog.detail', $blog->slug) }}" class="btn-blog">
                     Baca Selengkapnya
                 </a>
             </div>
@@ -36,34 +36,44 @@
         {{ $blogs->links() }}
     </div>
 
-    {{-- === FOOTER === --}}
-    <footer class="fade-up">
-        <p>© 2025 GadgetZone. All Rights Reserved.</p>
-    </footer>
 
-
-    {{-- === CSS (Rahara sesuaikan dari template kamu) === --}}
+    {{-- =====================================
+          CSS BLOG DENGAN HERO BIRU
+    ====================================== --}}
     <style>
-        .hero {
+
+        /* ===================================
+           HERO BLOG (FULL BIRU SEPERTI PRODUK)
+        ===================================== */
+        .blog-hero {
             text-align: center;
             padding: 70px 20px 40px;
+            background: linear-gradient(135deg, #0099ff, #00c3ff);
+            color: white;
         }
-        .hero h1 {
+
+        .blog-hero h1 {
             font-size: 32px;
             font-weight: 800;
         }
-        .hero p {
-            color: #666;
+
+        .blog-hero p {
             margin-top: 8px;
+            font-size: 15px;
+            opacity: .95;
         }
 
+
+        /* ===================================
+           BLOG GRID
+        ===================================== */
         .blog-container {
             max-width: 1100px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 25px;
-            padding: 20px;
+            padding: 25px 20px;
         }
 
         .blog-card {
@@ -98,7 +108,11 @@
             line-height: 1.45;
         }
 
-        .btn {
+
+        /* ===================================
+           BUTTON BLOG
+        ===================================== */
+        .btn-blog {
             display: inline-block;
             padding: 10px 14px;
             background: #007bff;
@@ -108,17 +122,10 @@
             transition: 0.2s;
         }
 
-        .btn:hover {
+        .btn-blog:hover {
             background: #005ad1;
         }
 
-        footer {
-            text-align: center;
-            padding: 25px 0;
-            margin-top: 50px;
-            color: #666;
-            font-size: 14px;
-        }
     </style>
 
 </x-layoutUser>

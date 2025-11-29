@@ -1,53 +1,54 @@
 <?php
 
 use App\Http\Controllers\AdminBlogController;
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
-
 
 /*
 |--------------------------------------------------------------------------
 | PUBLIC ROUTES
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () {
-    return view('user.landing');
-})->name('home');
 
+// Landing page (guest & user login sama)
+Route::get('/', [LandingController::class, 'index'])->name('landing');
 
 /*
 |--------------------------------------------------------------------------
 | AUTH ROUTES
 |--------------------------------------------------------------------------
 */
+
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 /*
 |--------------------------------------------------------------------------
 | ADMIN ROUTES
 |--------------------------------------------------------------------------
 */
+
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
 
-    // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Orders
     Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders');
     Route::get('/orders/{id}', [AdminOrderController::class, 'show'])->name('orders.show');
-    Route::put('/orders/{id}/update-status', [AdminOrderController::class, 'updateStatus'])
-        ->name('orders.updateStatus');
+    Route::put('/orders/{id}/update-status', [AdminOrderController::class, 'updateStatus'])->name('orders.updateStatus');
 
     // Produk CRUD
     Route::prefix('produk')->name('produk.')->group(function () {
@@ -57,6 +58,16 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
         Route::get('/edit/{id}', [ProdukController::class, 'edit'])->name('edit');
         Route::put('/update/{id}', [ProdukController::class, 'update'])->name('update');
         Route::delete('/delete/{id}', [ProdukController::class, 'destroy'])->name('delete');
+    });
+
+    // Category CRUD
+    Route::prefix('category')->name('category.')->group(function () {
+        Route::get('/', [AdminCategoryController::class, 'index'])->name('index');
+        Route::get('/create', [AdminCategoryController::class, 'create'])->name('create');
+        Route::post('/store', [AdminCategoryController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [AdminCategoryController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [AdminCategoryController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [AdminCategoryController::class, 'destroy'])->name('delete');
     });
 
     // Customer CRUD
@@ -81,19 +92,22 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | USER ROUTES
 |--------------------------------------------------------------------------
 */
+
 Route::middleware(['auth', 'role:user'])->group(function () {
 
-    Route::get('/landingLogin', fn() => view('user.landingLogin'))
-        ->name('user.landingLogin');
-
-    // Produk user
+    // Produk
     Route::get('/products', [ProdukController::class, 'listUser'])->name('productUser');
+
+    // Filter produk per kategori
+    Route::get('/products/category/{id}', [ProdukController::class, 'filterByCategory'])
+        ->name('productUser.category');
+
+    // Detail produk
     Route::get('/produk/{id}', [ProdukController::class, 'detail'])->name('user.produk_detail');
 
     // Contact
@@ -112,5 +126,3 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     // Cart
     Route::post('/cart/add/{id}', [CheckoutController::class, 'addToCart'])->name('cart.add');
 });
-
-// *END*

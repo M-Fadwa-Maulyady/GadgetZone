@@ -1,6 +1,6 @@
 <x-layoutAdmin>
 
-    <!-- start page title -->
+    <!-- Page Title -->
     <div class="page-title-box">
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -17,7 +17,7 @@
 
                 <div class="col-sm-6">
                     <div class="float-end d-none d-sm-block">
-                        <a href="{{ route('dataCustomer.create') }}" class="btn btn-success">
+                        <a href="{{ route('admin.customers.create') }}" class="btn btn-success">
                             <i class="mdi mdi-plus me-2"></i> Add Customer
                         </a>
                     </div>
@@ -26,7 +26,7 @@
             </div>
         </div>
     </div>
-    <!-- end page title -->
+    <!-- END Title -->
 
 
     <div class="container-fluid">
@@ -37,21 +37,19 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <div>
-                            <a href="{{ route('dataCustomer.create') }}" class="btn btn-success mb-2">
-                                <i class="mdi mdi-plus me-2"></i> Tambah Customer
-                            </a>
-                        </div>
+                        <a href="{{ route('admin.customers.create') }}" class="btn btn-success mb-3">
+                            <i class="mdi mdi-plus me-2"></i> Tambah Customer
+                        </a>
 
-                        <div class="table-responsive mt-3">
-                            <table class="table table-centered datatable dt-responsive nowrap" style="width: 100%;">
+                        <div class="table-responsive">
+                            <table class="table table-centered datatable dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
                                         <th>Nama</th>
                                         <th>Email</th>
                                         <th>Alamat</th>
                                         <th>No. Telp</th>
-                                        <th>Aksi</th>
+                                        <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
 
@@ -63,26 +61,26 @@
                                         <td>{{ $c->alamat }}</td>
                                         <td>{{ $c->no_telp }}</td>
 
-                                        <td id="tooltip-container-{{ $c->id }}">
+                                        <td class="text-center">
 
                                             {{-- EDIT --}}
-                                            <a href="{{ route('dataCustomer.edit', $c->id) }}"
-                                                class="me-3 text-primary"
-                                                data-bs-toggle="tooltip"
-                                                title="Edit">
+                                            <a href="{{ route('admin.customers.edit', $c->id) }}"
+                                               class="text-primary me-3"
+                                               data-bs-toggle="tooltip"
+                                               title="Edit">
                                                 <i class="mdi mdi-pencil font-size-18"></i>
                                             </a>
 
                                             {{-- DELETE --}}
-                                            <form action="{{ route('dataCustomer.delete', $c->id) }}"
-                                                method="POST"
-                                                style="display:inline;">
+                                            <form action="{{ route('admin.customers.delete', $c->id) }}"
+                                                  method="POST"
+                                                  style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="text-danger btn btn-link p-0"
-                                                        onclick="return confirm('Hapus customer ini?')"
-                                                        data-bs-toggle="tooltip"
-                                                        title="Delete">
+                                                    onclick="return confirm('Yakin ingin hapus customer ini?')"
+                                                    data-bs-toggle="tooltip"
+                                                    title="Delete">
                                                     <i class="mdi mdi-trash-can font-size-18"></i>
                                                 </button>
                                             </form>

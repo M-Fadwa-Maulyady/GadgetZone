@@ -13,8 +13,14 @@ class Produk extends Model
         'harga',
         'stok',
         'gambar',
-        'deskripsi'
+        'deskripsi',
+        'category_id'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     /** Relasi ke OrderItem (1 product bisa ada di banyak order item) */
     public function orderItems()

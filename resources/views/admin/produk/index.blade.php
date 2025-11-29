@@ -17,7 +17,7 @@
 
                 <div class="col-sm-6">
                     <div class="float-end d-none d-sm-block">
-                        <a href="{{ route('dataProduk.create') }}" class="btn btn-success">
+                        <a href="{{ route('admin.produk.create') }}" class="btn btn-success">
                             <i class="mdi mdi-plus me-1"></i> Tambah Produk
                         </a>
                     </div>
@@ -50,6 +50,7 @@
                                     <th>No</th>
                                     <th>Gambar</th>
                                     <th>Nama Produk</th>
+                                    <th>Kategori</th> <!-- NEW -->
                                     <th>Harga</th>
                                     <th>Stok</th>
                                     <th style="width:130px;">Aksi</th>
@@ -68,6 +69,12 @@
                                     </td>
 
                                     <td>{{ $item->nama }}</td>
+
+                                    <!-- KATEGORI PRODUK -->
+                                    <td>
+                                        {{ $item->category->nama ?? '–' }}
+                                    </td>
+
                                     <td>Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
                                     <td>{{ $item->stok }}</td>
 
@@ -75,14 +82,12 @@
                                         <div class="d-flex gap-2">
 
                                             {{-- EDIT --}}
-                                            <a href="{{ route('dataProduk.edit', $item->id) }}"
-                                               class="btn btn-sm btn-success">
+                                            <a href="{{ route('admin.produk.edit', $item->id) }}" class="btn btn-sm btn-success">
                                                 <i class="mdi mdi-pencil"></i>
                                             </a>
 
                                             {{-- DELETE --}}
-                                            <form action="{{ route('dataProduk.delete', $item->id) }}"
-                                                  method="POST"
+                                            <form action="{{ route('admin.produk.delete', $item->id) }}" method="POST"
                                                   onsubmit="return confirm('Yakin hapus produk ini?')">
                                                 @csrf
                                                 @method('DELETE')
@@ -91,13 +96,6 @@
                                                 </button>
                                             </form>
 
-                                            {{-- DETAIL (BLM ADA ROUTE) --}}
-                                            {{-- 
-                                            <a href="{{ route('dataProduk.detail', $item->id) }}"
-                                               class="btn btn-sm btn-primary">
-                                                <i class="mdi mdi-eye"></i>
-                                            </a>
-                                            --}}
                                         </div>
                                     </td>
 
@@ -110,7 +108,6 @@
 
                 </div>
             </div>
-
 
         </div>
     </div>

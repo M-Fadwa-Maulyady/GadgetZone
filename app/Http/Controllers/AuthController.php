@@ -22,14 +22,17 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+    $request->session()->regenerate();
 
-            if (Auth::user()->role === 'admin') {
-                return redirect()->route('dashboard')->with('success','Selamat Datang admin');
-            } else {
-                return redirect()->route('user.landingLogin')->with('success','Selamat Datang user');
-            }
-        }
+    if (Auth::user()->role === 'admin') {
+        return redirect()->route('admin.dashboard')
+            ->with('success', 'Selamat Datang admin');
+    } else {
+        return redirect()->route('landing')
+            ->with('success', 'Selamat Datang user');
+    }
+}
+
 
         return back()->withErrors([
             'email' => 'Email atau password salah.',

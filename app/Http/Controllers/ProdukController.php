@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produk;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
 {
-    /** =============== ADMIN AREA =============== */
-    
+    /** ================= ADMIN ================= */
+
     public function index()
     {
         $produk = Produk::orderBy('id', 'desc')->get();
@@ -17,7 +18,8 @@ class ProdukController extends Controller
 
     public function create()
     {
-        return view('admin.produk.create');
+        $categories = Category::all();
+        return view('admin.produk.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -25,13 +27,15 @@ class ProdukController extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'harga' => 'required|numeric',
-            'stok' => 'required|numeric',
+            'stok'  => 'required|numeric',
             'gambar' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'deskripsi' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id'
         ]);
 
-        $filename = time() . '_' . $request->file('gambar')->getClientOriginalName();
-        $request->file('gambar')->move(public_path('tema/img/produk'), $filename);
+        // upload gambar
+        $filename = time() . '_' . $request->gambar->getClientOriginalName();
+        $request->gambar->move(public_path('tema/img/produk'), $filename);
 
         Produk::create([
             'nama' => $request->nama,
@@ -39,16 +43,19 @@ class ProdukController extends Controller
             'stok' => $request->stok,
             'gambar' => $filename,
             'deskripsi' => $request->deskripsi,
+            'category_id' => $request->category_id
         ]);
 
-        return redirect()->route('dataProduk.index')
+        return redirect()->route('admin.produk.index')
                          ->with('success', 'Produk berhasil ditambahkan!');
     }
 
     public function edit($id)
     {
         $produk = Produk::findOrFail($id);
-        return view('admin.produk.edit', compact('produk'));
+        $categories = Category::all();
+
+        return view('admin.produk.edit', compact('produk', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -56,20 +63,22 @@ class ProdukController extends Controller
         $produk = Produk::findOrFail($id);
 
         $request->validate([
-            'nama' => 'required|string|max:255',
+            'nama' => 'required',
             'harga' => 'required|numeric',
             'stok' => 'required|numeric',
             'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'deskripsi' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id'
         ]);
 
+        // jika ada gambar baru
         if ($request->hasFile('gambar')) {
 
-            $filename = time() . '_' . $request->file('gambar')->getClientOriginalName();
-            $request->file('gambar')->move(public_path('tema/img/produk'), $filename);
+            $filename = time() .'_'.$request->gambar->getClientOriginalName();
+            $request->gambar->move(public_path('tema/img/produk'), $filename);
 
-            if (file_exists(public_path('tema/img/produk/' . $produk->gambar))) {
-                unlink(public_path('tema/img/produk/' . $produk->gambar));
+            if (file_exists(public_path('tema/img/produk/'.$produk->gambar))) {
+                unlink(public_path('tema/img/produk/'.$produk->gambar));
             }
 
             $produk->gambar = $filename;
@@ -78,11 +87,12 @@ class ProdukController extends Controller
         $produk->update([
             'nama' => $request->nama,
             'harga' => $request->harga,
-            'stok' => $request->stok,
+            'stok'  => $request->stok,
             'deskripsi' => $request->deskripsi,
+            'category_id' => $request->category_id
         ]);
 
-        return redirect()->route('dataProduk.index')
+        return redirect()->route('admin.produk.index')
                          ->with('success', 'Produk berhasil diperbarui!');
     }
 
@@ -90,33 +100,43 @@ class ProdukController extends Controller
     {
         $produk = Produk::findOrFail($id);
 
-        if (file_exists(public_path('tema/img/produk/' . $produk->gambar))) {
-            unlink(public_path('tema/img/produk/' . $produk->gambar));
+        if (file_exists(public_path('tema/img/produk/'.$produk->gambar))) {
+            unlink(public_path('tema/img/produk/'.$produk->gambar));
         }
 
         $produk->delete();
 
-        return redirect()->route('dataProduk.index')
+        return redirect()->route('admin.produk.index')
                          ->with('success', 'Produk berhasil dihapus!');
     }
+    
 
+    /** ================= USER ================= */
 
-    /** =============== USER AREA =============== */
+    public function listUser()
+    {
+        $produk = Produk::latest()->get();
+        return view('user.product', ['products' => $produk]);
+    }
 
-/** Menampilkan daftar produk untuk user */
-/** Menampilkan daftar produk untuk user */
-public function listUser()
-{
-    $produk = Produk::orderBy('id', 'desc')->get();
-    return view('user.product', ['products' => $produk]);
-}
+    public function detail($id)
+    {
+        $produk = Produk::findOrFail($id);
+        return view('user.produk_detail', compact('produk'));
+    }
 
+    public function landing()
+    {
+        $categories = Category::all(); // ambil semua kategori
 
-/** Menampilkan halaman detail produk */
-public function detail($id)
-{
-    $produk = Produk::findOrFail($id);
-    return view('user.produk_detail', compact('produk')); // FIXED
-}
+        return view('user.landing', compact('categories'));
+    }
+
+        public function landingLogin()
+    {
+        $categories = Category::all();
+        return view('user.landingLogin', compact('categories'));
+    }
+
 
 }

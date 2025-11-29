@@ -4,9 +4,11 @@
         <div class="user-sidebar text-center">
             <div class="dropdown">
                 <div class="user-img">
-                    <img src="{{ asset('tema/admin/assets/images/users/avatar-7.jpg') }}" alt="" class="rounded-circle">
+                    <img src="{{ asset('tema/admin/assets/images/users/avatar-7.jpg') }}" 
+                         alt="" class="rounded-circle">
                     <span class="avatar-online bg-success"></span>
                 </div>
+
                 <div class="user-info">
                     <h5 class="mt-3 font-size-16 text-white">{{ auth()->user()->name }}</h5>
                     <span class="font-size-13 text-white-50">
@@ -16,12 +18,13 @@
             </div>
         </div>
 
+
         <div id="sidebar-menu">
             <ul class="metismenu list-unstyled" id="side-menu">
 
                 {{-- Dashboard --}}
                 <li>
-                    <a href="{{ route('admin.dashboard') }}" 
+                    <a href="{{ route('admin.dashboard') }}"
                        class="waves-effect {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                         <i class="dripicons-home"></i>
                         <span>Dashboard</span>
@@ -30,24 +33,32 @@
 
                 {{-- Customers --}}
                 <li>
-                    <a href="{{ route('dataCustomer.index') }}"
-                       class="waves-effect {{ request()->routeIs('dataCustomer.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.customers.index') }}"
+                       class="waves-effect {{ request()->routeIs('admin.customers.*') ? 'active' : '' }}">
                         <i class="fa-solid fa-users"></i>
                         <span>Customers</span>
                     </a>
                 </li>
 
+                {{-- Category --}}
+                <li>
+                    <a href="{{ route('admin.category.index') }}">
+                        <i class="mdi mdi-format-list-bulleted"></i>
+                        <span>Kategori</span>
+                    </a>
+                </li>
+
+
                 {{-- Produk --}}
                 <li>
-                     <a href="{{ route('dataProduk.index') }}"
-                        class="waves-effect {{ request()->routeIs('dataProduk.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.produk.index') }}"
+                       class="waves-effect {{ request()->routeIs('admin.produk.*') ? 'active' : '' }}">
                         <i class="fa-solid fa-basket-shopping"></i>
                         <span>Product</span>
                     </a>
                 </li>
 
-                {{-- Orders - only admin --}}
-                @if(auth()->check() && auth()->user()->role == 'admin')
+                {{-- Orders --}}
                 <li>
                     <a href="{{ route('admin.orders') }}"
                        class="waves-effect {{ request()->routeIs('admin.orders*') ? 'active' : '' }}">
@@ -55,25 +66,15 @@
                         <span>Orders</span>
                     </a>
                 </li>
-                @endif
 
-                  <li>
-                     <a href="{{ route('admin.blog.index') }}"
-                        class="waves-effect {{ request()->routeIs('admin.blog.*') ? 'active' : '' }}">
+                {{-- Blog --}}
+                <li>
+                    <a href="{{ route('admin.blog.index') }}"
+                       class="waves-effect {{ request()->routeIs('admin.blog.*') ? 'active' : '' }}">
                         <i class="fa-solid fa-blog"></i>
                         <span>Blog</span>
                     </a>
                 </li>
-
-                {{-- Laporan --}}
-                {{-- <li>
-    <a href="{{ route('admin.laporan.index') }}" 
-       class="waves-effect {{ request()->routeIs('admin.laporan.*') ? 'active' : '' }}">
-        <i class="fa-solid fa-book"></i>
-        <span>Laporan</span>
-    </a>
-</li> --}}
-
 
             </ul>
         </div>

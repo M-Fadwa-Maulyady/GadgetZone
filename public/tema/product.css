@@ -1,4 +1,6 @@
-/* ==== GLOBAL STYLES ==== */
+/* ----------------------------------------------------------
+   GLOBAL STYLES
+---------------------------------------------------------- */
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #f6f8fc;
@@ -9,7 +11,9 @@ body {
 
 
 
-/* ==== HERO SECTION ==== */
+/* ----------------------------------------------------------
+   HERO SECTION
+---------------------------------------------------------- */
 .hero {
   background: linear-gradient(135deg, #007bff, #00b7ff);
   color: #fff;
@@ -42,12 +46,16 @@ body {
   background: #e0ecff;
 }
 
-/* ==== GLOW BUTTON ==== */
+/* Glow Button */
 .glow-btn {
   box-shadow: 0 0 12px rgba(0, 120, 255, 0.7);
-} 
+}
 
-/* ==== KATEGORI ==== */
+
+
+/* ----------------------------------------------------------
+   KATEGORI SECTION
+---------------------------------------------------------- */
 .categories {
   display: flex;
   justify-content: center;
@@ -85,7 +93,11 @@ body {
   font-size: 1.2rem;
 }
 
-/* ==== PRODUCT GRID ==== */
+
+
+/* ----------------------------------------------------------
+   PRODUCT LIST / GRID GLOBAL
+---------------------------------------------------------- */
 .product-list {
   text-align: center;
   padding: 60px 7%;
@@ -123,6 +135,11 @@ body {
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
 }
 
+
+
+/* ----------------------------------------------------------
+   PRODUCT GRID (Katalog Besar)
+---------------------------------------------------------- */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -135,7 +152,6 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   padding: 20px;
   transition: 0.3s;
-  position: relative;
 }
 
 .product-card:hover {
@@ -161,26 +177,11 @@ body {
   margin: 8px 0;
 }
 
-.stars {
-  color: gold;
-  font-size: 0.9rem;
-}
 
-.btn-cart {
-  background: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 500;
-}
 
-.btn-cart:hover {
-  background: #005fcc;
-}
-
-/* ==== VOUCHER ==== */
+/* ----------------------------------------------------------
+   VOUCHER
+---------------------------------------------------------- */
 .voucher {
   background: linear-gradient(135deg, #0078ff, #00c6ff);
   color: white;
@@ -191,12 +192,11 @@ body {
   box-shadow: 0 4px 15px rgba(0, 120, 255, 0.25);
 }
 
-.voucher h3 {
-  margin-bottom: 10px;
-  font-size: 1.6rem;
-}
 
-/* ==== JOIN COMMUNITY ==== */
+
+/* ----------------------------------------------------------
+   JOIN COMMUNITY
+---------------------------------------------------------- */
 .join {
   background: linear-gradient(135deg, #007bff, #00c6ff);
   color: #fff;
@@ -208,53 +208,11 @@ body {
   box-shadow: 0 8px 25px rgba(0, 123, 255, 0.25);
 }
 
-.join h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  animation: fadeInDown 1s ease-in-out;
-}
 
-.join p {
-  font-size: 1.1rem;
-  margin-bottom: 25px;
-  opacity: 0.9;
-}
 
-.join-input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.join-input input {
-  padding: 12px 20px;
-  border-radius: 30px;
-  border: none;
-  outline: none;
-  width: 280px;
-  font-size: 1rem;
-}
-
-.join-input .btn {
-  padding: 12px 25px;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  background: #fff;
-  color: #007bff;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.join-input .btn:hover {
-  background: #007bff;
-  color: #fff;
-  box-shadow: 0 0 10px rgba(255,255,255,0.8);
-}
-
-/* ==== FOOTER ==== */
+/* ----------------------------------------------------------
+   FOOTER
+---------------------------------------------------------- */
 .footer {
   background: linear-gradient(180deg, #ffffff, #f4f9ff);
   margin-top: 80px;
@@ -263,106 +221,12 @@ body {
   box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.05);
 }
 
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin-bottom: 40px;
-}
 
-.footer-brand h3 {
-  color: #0078ff;
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
 
-.footer-brand p {
-  color: #555;
-  max-width: 320px;
-  line-height: 1.6;
-}
-
-.footer-links h4,
-.footer-social h4 {
-  color: #0078ff;
-  margin-bottom: 12px;
-}
-
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links ul li {
-  margin-bottom: 8px;
-}
-
-.footer-links ul li a {
-  text-decoration: none;
-  color: #333;
-  transition: 0.3s;
-}
-
-.footer-links ul li a:hover {
-  color: #0078ff;
-  padding-left: 4px;
-}
-
-.social-icons {
-  display: flex;
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.social-icons a img {
-  width: 32px;
-  height: 32px;
-  transition: transform 0.3s, filter 0.3s;
-}
-
-.social-icons a:hover img {
-  transform: scale(1.15);
-  filter: drop-shadow(0 0 8px rgba(0, 120, 255, 0.7));
-}
-
-.footer-bottom {
-  text-align: center;
-  border-top: 1px solid #e6e9ef;
-  padding-top: 15px;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-/* ==== ANIMASI ==== */
-.fade-in {
-  animation: fadeIn 0.9s ease-in;
-}
-
-.fade-up {
-  animation: fadeUp 1s ease-in;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInDown {
-  from {opacity: 0; transform: translateY(-20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-/* ==== RESPONSIVE ==== */
+/* ----------------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------------- */
 @media (max-width: 768px) {
-  header nav ul {
-    gap: 15px;
-  }
 
   .hero h1 {
     font-size: 1.8rem;
@@ -376,7 +240,8 @@ body {
     width: 90%;
   }
 
-  .popular, .product-list {
+  .popular,
+  .product-list {
     padding: 50px 5%;
   }
 
@@ -384,18 +249,18 @@ body {
     margin: 60px 5%;
   }
 
-  .filters {
-    gap: 10px;
-  }
-
   .join {
     width: 95%;
     padding: 60px 5%;
   }
+}
 
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
+
+
+/* ----------------------------------------------------------
+   FIX LEBAR PRODUK (ANTI MELEBAR)
+---------------------------------------------------------- */
+#produk-section.popular {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }

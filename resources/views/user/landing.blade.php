@@ -4,7 +4,7 @@
     <section class="hero-section">
       <div class="hero-left">
         <div class="slider" id="mainSlider">
-          <div class="slide" style="background-image:url('img/home1.jpeg');">
+          <div class="slide" style="background-image:url('tema/img/home1.jpeg');">
             <div class="slide-content">
               <small>GAMING GEAR</small>
               <h1>GAME CONTROLLER</h1>
@@ -12,7 +12,7 @@
               <a class="btn btn-primary" href="#">Shop Now</a>
             </div>
           </div>
-          <div class="slide" style="background-image:url('img/home2.jpeg');">
+          <div class="slide" style="background-image:url('tema/img/home2.jpeg');">
             <div class="slide-content">
               <small>NEW ARRIVAL</small>
               <h1>PLAY STATION 5</h1>
@@ -29,7 +29,7 @@
 
       <div class="hero-right">
         <a class="promo-card" href="#" style="background-image:linear-gradient(120deg,#8b5cf6,#ec4899);">
-          <img src="img/bambo_speaker.png" alt="">
+          <img src="{{ asset('tema/img/bambo_speaker.png') }}" alt="">
           <div class="promo-text">
             <small>NEW ARRIVALS</small>
             <h3>BAMBOBUDS</h3>
@@ -38,7 +38,7 @@
         </a>
 
         <a class="promo-card" href="#" style="background-image:linear-gradient(120deg,#06b6d4,#8b5cf6);">
-          <img src="img/homepod.png" alt="">    
+          <img src="{{ asset('tema/img/homepod.png') }}" alt="">    
           <div class="promo-text">
             <small>NEW ARRIVALS</small>
             <h3>HOMEPOD PRO</h3>
@@ -50,20 +50,27 @@
 
     <!-- categories carousel -->
     <section class="category-strip">
-      <button class="cat-arrow" id="catPrev">‹</button>
-      <div class="cat-track" id="catTrack">
-        <!-- repeated circular categories -->
-        <div class="cat-item"><img src="img/katagori smartphone.png" alt=""><span>Smartphone</span></div>
-        <div class="cat-item"><img src="img/katagori tablet.png" alt=""><span>Tablet</span></div>
-        <div class="cat-item"><img src="img/katagori kamera.png" alt=""><span>Camera</span></div>
-        <div class="cat-item"><img src="img/katagori game console.png" alt=""><span>Game Console</span></div>
-        <div class="cat-item"><img src="img/katagori smartwatch.png" alt=""><span>Smartwatch</span></div>
-        <div class="cat-item"><img src="img/katagori drone.png" alt=""><span>Drone</span></div>
-        <div class="cat-item"><img src="img/katagori audio.png" alt=""><span>Audio</span></div>
-        <div class="cat-item"><img src="img/katagori computer.png" alt=""><span>Computer</span></div>
-      </div>
-      <button class="cat-arrow" id="catNext">›</button>
-    </section>
+    <button class="cat-arrow" id="catPrev">‹</button>
+
+    <div class="cat-track" id="catTrack">
+
+        @foreach($categories as $cat)
+            <div class="cat-item">
+                <img 
+                    src="{{ $cat->icon 
+                        ? asset('uploads/categories/' . $cat->icon) 
+                        : asset('img/default-category.png') 
+                    }}"
+                    alt="{{ $cat->nama }}">
+                <span>{{ $cat->nama }}</span>
+            </div>
+        @endforeach
+
+    </div>
+
+    <button class="cat-arrow" id="catNext">›</button>
+</section>
+
 
     <!-- features -->
     <section class="features">
@@ -90,98 +97,88 @@
     </section>
 
     <!-- featured product trio -->
-    <section class="product-trio">
-      <article class="product-hero">
-        <img src="img/macbook pro16.png" alt="">
-        <div class="p-info">
-          <h4>Macbook Pro 16</h4>
-          <p>2K Fullview Touch Display</p>
-          <p class="price">Rp15.999.000</p>
-          <br>
-            <button class="btn">Masukkan Keranjang</button>
-        </div>
-      </article>
-      <article class="product-hero">
-        <img src="img/smart speaker.png" alt="">
-        <div class="p-info">
-          <h4>Smart Speaker</h4>
-          <p>Dual-speaker true sound</p>
-          <p class="price">Rp2.999.000</p>
-          <br>
-            <button class="btn">Masukkan Keranjang</button>
-        </div>
-      </article>
-      <article class="product-hero">
-        <img src="img/bambo_speaker1.png" alt="">
-        <div class="p-info">
-          <h4>Bamboo Speaker</h4>
-          <p>Sound that speaks for itself</p>
-           <p class="price">Rp3.999.000</p>
-           <br>
-            <button class="btn">Masukkan Keranjang</button>
-        </div>
-      </article>
-    </section>
+    
 
     <!-- top smartphone trends -->
-    <section class="grid-products">
-      <h3 class="section-title">Top Smartphone Trends</h3>
-      <div class="card-grid">
-        <!-- product card (repeatable) -->
-        <div class="card">
-          <img src="img/Xiaomi Readmi Note 14.png" alt="">
-          <div class="card-body">
-            <h5>Xiaomi Readmi Note 14 </h5>
-            <p class="price">Rp3.999.000</p>
-            <button class="btn">Masukkan Keranjang</button>
-          </div>
-        </div>
+    <!-- ======================= -->
+<!-- Top Smartphone Trends -->
+<!-- ======================= -->
+<section class="grid-products" style="margin-top: 60px;">
+  <h3 class="section-title" style="text-align:center; margin-bottom:25px;">
+      Top Smartphone Trends
+  </h3>
 
-        <div class="card">
-          <img src="img/Iphone 16 plus.png" alt="">
-          <div class="card-body">
-            <h5>Iphone 16 plus</h5>
-            <p class="price">Rp 15.999.000</p>
-            <button class="btn">Masukkan Keranjang</button>
-          </div>
-        </div>
+  <div class="card-grid">
+      @foreach ($smartphones as $hp)
+      <div class="card" style="padding-bottom:15px;">
 
-        <div class="card">
-          <img src="img/Realme c75.png" alt="">
-          <div class="card-body">
-            <h5>Realme c75</h5>
-            <p class="price">Rp 2.399.000</p>
-            <button class="btn">Masukkan Keranjang</button>
-          </div>
-        </div>
+    <a href="{{ route('user.produk_detail', $hp->id) }}">
+        <img src="{{ asset('tema/img/produk/' . $hp->gambar) }}"
+             alt="{{ $hp->nama }}"
+             style="object-fit:cover; height:230px; width:100%; border-radius:8px;">
+    </a>
 
-        <div class="card">
-          <img src="img/Samsung Galaksi S24 Ultra.png" alt="">
-          <div class="card-body">
-            <h5>Samsung Galaksi S24 Ultra</h5>
-            <p class="price">Rp21.999.000</p>
-            <button class="btn">Masukkan Keranjang</button>
-          </div>
-        </div>
+    <div class="card-body" style="padding-top:15px;">
+        <h5 style="font-size:16px; font-weight:600; margin-bottom:5px;">
+            {{ $hp->nama }}
+        </h5>
 
-        <div class="card">
-          <img src="img/Samsung Galaksi Z Fold 7.png" alt="">
-          <div class="card-body">
-            <h5>Samsung Galaksi Z Fold 7</h5>
-            <p class="price">Rp31.499.000</p>
-            <button class="btn">Masukkan Keranjang</button>
-          </div>
-        </div>
+        <p class="price" style="color:#00AEEF; font-weight:700;">
+            Rp {{ number_format($hp->harga, 0, ',', '.') }}
+        </p>
 
-        <div class="card">
-          <img src="img/Tecno Pova 5.png" alt="">
-          <div class="card-body">
-            <h5>Tecno Pova 5</h5>
-            <p class="price">Rp 3.199.000</p>
-            <button class="btn">Masukkan Keranjang</button>
-          </div>
-        </div>
-      </div>
-    </section>
+        <form action="{{ route('cart.add', $hp->id) }}" method="POST">
+            @csrf
+            <button class="btn" style="width:100%; margin-top:8px;">Masukkan Keranjang</button>
+        </form>
+    </div>
+
+</div>
+
+      @endforeach
+  </div>
+</section>
+
+
+<!-- ======================= -->
+<!-- Top Drone Trends -->
+<!-- ======================= -->
+<section class="grid-products" style="margin-top:70px;">
+  <h3 class="section-title" style="text-align:center; margin-bottom:25px;">
+      Top Drone Trends
+  </h3>
+
+  <div class="card-grid">
+      @foreach ($drones as $dr)
+      <div class="card" style="padding-bottom:15px;">
+
+    <a href="{{ route('user.produk_detail', $dr->id) }}">
+        <img src="{{ asset('tema/img/produk/' . $dr->gambar) }}"
+             alt="{{ $dr->nama }}"
+             style="object-fit:cover; height:230px; width:100%; border-radius:8px;">
+    </a>
+
+    <div class="card-body" style="padding-top:15px;">
+        <h5 style="font-size:16px; font-weight:600; margin-bottom:5px;">
+            {{ $dr->nama }}
+        </h5>
+
+        <p class="price" style="color:#00AEEF; font-weight:700;">
+            Rp {{ number_format($dr->harga, 0, ',', '.') }}
+        </p>
+
+        <form action="{{ route('cart.add', $dr->id) }}" method="POST">
+            @csrf
+            <button class="btn" style="width:100%; margin-top:8px;">Masukkan Keranjang</button>
+        </form>
+    </div>
+
+</div>
+
+      @endforeach
+  </div>
+</section>
+
+
 
 </x-layoutUser>

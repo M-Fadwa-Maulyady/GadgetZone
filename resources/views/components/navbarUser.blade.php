@@ -43,8 +43,8 @@
     <nav class="main-nav"
          style="display:flex; justify-content:center; gap:30px; padding:15px 0;">
 
-        <a href="{{ route('user.landingLogin') }}"
-           class="{{ request()->routeIs('user.landingLogin') ? 'active' : '' }}">
+        <a href="{{ route('landing') }}"
+           class="{{ request()->routeIs('landing') ? 'active' : '' }}">
             Home
         </a>
 

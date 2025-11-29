@@ -10,7 +10,7 @@
                         <h4>Tambah Produk</h4>
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="#">GadgetZone</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('dataProduk.index') }}">Catalog</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.produk.index') }}">Catalog</a></li>
                             <li class="breadcrumb-item active">Tambah Produk</li>
                         </ol>
                     </div>
@@ -18,7 +18,7 @@
 
                 <div class="col-sm-6">
                     <div class="float-end d-none d-sm-block">
-                        <a href="{{ route('dataProduk.index') }}" class="btn btn-secondary">
+                        <a href="{{ route('admin.produk.index') }}" class="btn btn-secondary">
                             <i class="mdi mdi-arrow-left"></i> Kembali
                         </a>
                     </div>
@@ -45,7 +45,7 @@
                 <!-- CARD FORM -->
                 <div class="card-form-produk">
 
-                    <form action="{{ route('dataProduk.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.produk.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <!-- GAMBAR -->
@@ -79,9 +79,22 @@
                             <textarea name="deskripsi" class="textarea" placeholder="Masukkan deskripsi produk"></textarea>
                         </div>
 
+                        <!-- KATEGORI -->
+                        <div class="form-group">
+                            <label>Kategori Produk <span>*</span></label>
+                            <select name="category_id" class="input" required>
+                                <option value="">-- Pilih Kategori --</option>
+                                @foreach($categories as $cat)
+                                    <option value="{{ $cat->id }}">
+                                        {{ $cat->nama }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <!-- BUTTON -->
                         <div class="btn-row">
-                            <a href="{{ route('dataProduk.index') }}" class="btn-back">Kembali</a>
+                            <a href="{{ route('admin.produk.index') }}" class="btn-back">Kembali</a>
                             <button type="submit" class="btn-submit">
                                 <i class="fa-solid fa-save"></i> Simpan Produk
                             </button>
@@ -133,7 +146,7 @@
             color: red;
         }
 
-        .input, .textarea {
+        .input, .textarea, select.input {
             padding: 12px 14px;
             border-radius: 10px;
             border: 1px solid #d1d5db;
@@ -154,13 +167,11 @@
             resize: vertical;
         }
 
-        /* Row */
         .row-2 {
             display: flex;
             gap: 20px;
         }
 
-        /* Buttons */
         .btn-row {
             display: flex;
             justify-content: flex-end;

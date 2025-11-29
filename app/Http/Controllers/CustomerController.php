@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreAnggotaRequest;
 use App\Http\Requests\StoreCustomerRequest;
-use App\Http\Requests\UpdateAnggotaRequest;
 use App\Http\Requests\UpdateCustomerRequest;
-use App\Models\ContactMessage;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMail;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class CustomerController extends Controller
 {
@@ -32,7 +30,8 @@ class CustomerController extends Controller
 
         User::create($validated);
 
-        return redirect()->route('dataCustomer')->with('success', 'Customer berhasil ditambahkan.');
+        return redirect()->route('dataCustomer.index')
+            ->with('success', 'Customer berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -46,16 +45,16 @@ class CustomerController extends Controller
         $customer = User::findOrFail($id);
         $validated = $request->validated();
 
-        if (empty($validated['password'])) {
-            unset($validated['password']);
-            unset($validated['password_confirmation']);
-        } else {
+        if (!empty($validated['password'])) {
             $validated['password'] = Hash::make($validated['password']);
+        } else {
+            unset($validated['password']);
         }
 
         $customer->update($validated);
 
-        return redirect()->route('dataCustomer')->with('success', 'Customer berhasil diperbarui.');
+        return redirect()->route('dataCustomer.index')
+            ->with('success', 'Customer berhasil diperbarui.');
     }
 
     public function destroy($id)
@@ -63,41 +62,22 @@ class CustomerController extends Controller
         $customer = User::findOrFail($id);
         $customer->delete();
 
-        return redirect()->route('dataCustomer')->with('success', 'Customer berhasil dihapus.');
+        return redirect()->route('dataCustomer.index')
+            ->with('success', 'Customer berhasil dihapus.');
     }
 
     public function sendContact(Request $request)
-{
-    // Validasi
-    $request->validate([
-        'nama'    => 'required|string|max:255',
-        'email'   => 'required|email',
-        'telepon' => 'nullable|string|max:20',
-        'subjek'  => 'required|string|max:255',
-        'pesan'   => 'required|string|min:5',
-    ]);
+    {
+        $data = $request->validate([
+            'nama' => 'required',
+            'email' => 'required|email',
+            'telepon' => 'nullable',
+            'subjek' => 'required',
+            'pesan' => 'required',
+        ]);
 
-    // Simpan ke database
-    ContactMessage::create([
-        'nama'    => $request->nama,
-        'email'   => $request->email,
-        'telepon' => $request->telepon,
-        'subjek'  => $request->subjek,
-        'pesan'   => $request->pesan,
-    ]);
+        Mail::to(env('MAIL_USERNAME'))->send(new ContactMail($data));
 
-    // Kirim email ke admin
-    Mail::send('emails.contact', [
-        'nama'    => $request->nama,
-        'email'   => $request->email,
-        'telepon' => $request->telepon,
-        'subjek'  => $request->subjek,
-        'pesan'   => $request->pesan,
-    ], function ($message) use ($request) {
-        $message->to('support@gadgetzone.id')
-                ->subject('Pesan Kontak Baru: ' . $request->subjek);
-    });
-
-    return back()->with('success', 'Pesan berhasil dikirim! Kami akan segera menghubungi Anda.');
-}
+        return back()->with('success', 'Pesan Anda berhasil dikirim! Kami akan segera menghubungi Anda.');
+    }
 }

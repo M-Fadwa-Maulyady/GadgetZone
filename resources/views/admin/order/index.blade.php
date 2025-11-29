@@ -1,5 +1,28 @@
 <x-layoutAdmin>
 
+<style>
+    /* FIX konten admin ketarik ke atas karena navbar fixed */
+    .container {
+        margin-top: 80px !important;
+    }
+</style>
+<div class="page-title-box">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+
+                <div class="col-sm-6">
+                    <div class="page-title">
+                        <h4>Manajemen Orders</h4>
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="#">GadgetZone</a></li>
+                            <li class="breadcrumb-item active">Orders</li>
+                        </ol>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 <div class="container">
 
     <h4 class="mb-4">Daftar Pesanan</h4>
@@ -26,9 +49,11 @@
             <tr>
                 <td><input type="checkbox"></td>
 
-                <td><a href="{{ route('admin.orders.show', $order->id) }}" class="fw-bold">
-                    #{{ $order->id }}
-                </a></td>
+                <td>
+                    <a href="{{ route('admin.orders.show', $order->id) }}" class="fw-bold">
+                        #{{ $order->id }}
+                    </a>
+                </td>
 
                 <td>{{ $order->created_at->format('d M Y') }}</td>
 
